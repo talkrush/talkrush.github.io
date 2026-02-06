@@ -1,8 +1,8 @@
-# TalkRush – Free Chat With Strangers (Text, Video & Group Chat)
+# TalkRush – Free Chat With Strangers
 
 **TalkRush** is a modern online platform that allows users to **chat with strangers instantly** using text chat, 1-on-1 video calls, and group chat rooms. The platform is designed for people who want to meet new people online while staying anonymous and without mandatory registration.
 
-👉 **Official Website:**  
+**Official Website:**  
 [TalkRush – Chat With Strangers](https://talkrush.github.io)
 
 ---
@@ -99,5 +99,5 @@ TalkRush promotes anonymous communication, but users are encouraged to follow ba
 
 If you are looking for a **free chat with strangers website** that supports **text chat, 1v1 video calls, group chat rooms, private invite-only rooms, inbox management, and gender filters**, then TalkRush is a strong and simple choice.
 
-🔗 **Start chatting now:**  
-[Visit TalkRush](https://talkrush.github.io)
+**Start chatting now:**  
+[Visit TalkRush](https://shkumaraman.github.io)
