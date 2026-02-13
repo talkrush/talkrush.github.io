@@ -36,7 +36,7 @@ Users can connect via **private one-to-one video calls**, making conversations m
 ---
 
 ### 3. Group Chat Rooms
-TalkRush provides **public group chat rooms** where multiple users can join and chat together.
+TalkRush provides **public group chat rooms** where multiple users can join or Create and chat together.
 
 - Topic-based group discussions  
 - Meet multiple people at once  
