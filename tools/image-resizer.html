@@ -82,6 +82,7 @@ icon: "fas fa-image"
     max-width: 1000px;
     margin: 90px auto 40px;
     padding: 0 20px;
+    width: 100%;
   }
   
   .tool-title { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px; color: var(--dark-text); margin-bottom: 5px; }
@@ -100,6 +101,7 @@ icon: "fas fa-image"
     cursor: pointer;
     transition: all 0.3s;
     margin-bottom: 25px;
+    width: 100%;
   }
   .upload-area:hover { background: rgba(255,107,74,0.25); }
   .upload-icon { font-size: 3rem; color: var(--accent); margin-bottom: 15px; }
@@ -112,6 +114,7 @@ icon: "fas fa-image"
     grid-template-columns: 1fr 350px;
     gap: 25px;
     align-items: start;
+    width: 100%;
   }
   @media (max-width: 768px) {
     .editor-grid { grid-template-columns: 1fr; }
@@ -127,6 +130,8 @@ icon: "fas fa-image"
     align-items: center;
     min-height: 300px;
     overflow: hidden;
+    width: 100%;
+    min-width: 0;
   }
   .light-mode .preview-box { background: var(--light-surface); border-color: var(--light-border2); }
   
@@ -135,6 +140,7 @@ icon: "fas fa-image"
     max-height: 60vh;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    object-fit: contain;
   }
 
   .controls-box {
@@ -142,15 +148,18 @@ icon: "fas fa-image"
     border: 1px solid var(--dark-border2);
     border-radius: 12px;
     padding: 20px;
+    width: 100%;
+    min-width: 0;
   }
   .light-mode .controls-box { background: var(--light-surface); border-color: var(--light-border2); }
 
   .control-group { margin-bottom: 20px; }
   .control-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.95rem; }
   
-  .input-row { display: flex; gap: 10px; align-items: center; }
+  .input-row { display: flex; gap: 10px; align-items: center; width: 100%; }
   .input-row input[type="number"] {
     flex: 1;
+    min-width: 0;
     padding: 10px;
     background: var(--dark-input-bg);
     color: var(--dark-text);
@@ -163,9 +172,41 @@ icon: "fas fa-image"
   .checkbox-label { display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.9rem; margin-top: 8px; color: var(--dark-text-muted); }
   .light-mode .checkbox-label { color: var(--light-text-muted); }
 
-  .btn-group { display: flex; gap: 10px; }
+  input[type=checkbox] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+    flex-shrink: 0;
+  }
+  .light-mode input[type=checkbox] {
+    border-color: rgba(0, 0, 0, 0.3);
+  }
+  input[type=checkbox]:checked {
+    background-color: var(--accent);
+    border-color: var(--accent);
+  }
+  input[type=checkbox]:checked::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 1px;
+    width: 4px;
+    height: 9px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  .btn-group { display: flex; gap: 10px; width: 100%; }
   .action-btn {
     flex: 1;
+    min-width: 0;
     padding: 10px;
     background: var(--dark-input-bg);
     color: var(--dark-text);
