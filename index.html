@@ -10,13 +10,13 @@ description: "Free web tools to boost your productivity. Use our secure, fast, a
     --dark-surface: #111114;
     --dark-border2: rgba(255,255,255,0.08);
     --dark-text: #fff;
-    --dark-text-muted: rgba(255,255,255,0.5);
+    --dark-text-muted: rgba(255,255,255,0.7);
     
     --light-bg: #f5f5f5;
     --light-surface: #ffffff;
     --light-border2: rgba(0,0,0,0.1);
     --light-text: #333;
-    --light-text-muted: rgba(0,0,0,0.5);
+    --light-text-muted: rgba(0,0,0,0.7);
     
     --accent: #ff6b4a;
     --accent-dim: rgba(255,107,74,0.15);
@@ -202,53 +202,60 @@ description: "Free web tools to boost your productivity. Use our secure, fast, a
   .light-mode .tool-desc { color: var(--light-text-muted); }
 
   .info-section {
-    max-width: 900px;
+    max-width: 800px;
     margin: 0 auto 80px;
-    padding: 35px;
-    background: var(--dark-surface);
-    border: 1px solid var(--dark-border2);
-    border-radius: 16px;
+    padding: 0 20px;
     color: var(--dark-text-muted);
-    line-height: 1.7;
-    font-size: 0.95rem;
+    line-height: 1.8;
+    font-size: 1.05rem;
   }
   .light-mode .info-section {
-    background: var(--light-surface);
-    border-color: var(--light-border2);
     color: var(--light-text-muted);
   }
   
   .info-section h2 {
     color: var(--dark-text);
-    font-size: 1.5rem;
-    margin: 0 0 15px;
-    font-weight: 700;
-  }
-  .info-section h2:not(:first-child) {
-    margin-top: 40px;
+    font-size: 1.8rem;
+    margin: 60px 0 20px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
   }
   .light-mode .info-section h2 { color: var(--light-text); }
   
   .info-section h3 {
     color: var(--dark-text);
-    font-size: 1.1rem;
-    margin: 25px 0 8px;
-    font-weight: 600;
+    font-size: 1.3rem;
+    margin: 40px 0 12px;
+    font-weight: 700;
   }
   .light-mode .info-section h3 { color: var(--light-text); }
   
   .info-section p {
-    margin-bottom: 15px;
-  }
-  .info-section ul {
     margin-bottom: 20px;
-    padding-left: 20px;
+  }
+  
+  .info-section ul {
+    margin-bottom: 25px;
+    padding-left: 10px;
+    list-style: none;
   }
   .info-section li {
-    margin-bottom: 8px;
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 25px;
   }
+  .info-section li::before {
+    content: "•";
+    color: var(--accent);
+    font-size: 1.8rem;
+    position: absolute;
+    left: 0;
+    top: -5px;
+  }
+  
   .info-section strong {
     color: var(--dark-text);
+    font-weight: 600;
   }
   .light-mode .info-section strong {
     color: var(--light-text);
@@ -322,5 +329,5 @@ description: "Free web tools to boost your productivity. Use our secure, fast, a
   <p>Absolutely. We prioritize your privacy and security. Our tools process your data locally within your web browser. This means your sensitive information is never uploaded to or stored on our servers.</p>
 
   <h3>Can I use these tools on my smartphone?</h3>
-  <p>Yes! The entire layout is built with a responsive design, ensuring that every utility functions perfectly and remains visually appealing on mobile phones, tablets, and large desktop monitors alike.</p>
+  <p>Yes! The typography and layout adapt perfectly to smaller screens, ensuring that every utility remains highly readable and completely functional on mobile phones, tablets, and large desktop monitors alike.</p>
 </main>
