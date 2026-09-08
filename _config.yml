@@ -1,0 +1,17 @@
+title: "TalkRush Tools"
+description: "Free web tools to boost your productivity. Use our secure, fast, and privacy-focused online utilities including text counters, converters, and generators directly in your browser."
+baseurl: "" 
+url: "https://talkrush.in"
+
+# Language and region
+lang: "en"
+locale: "en_US"
+
+# Default Open Graph
+image: "/assets/logo.png"
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-paginate
