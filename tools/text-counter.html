@@ -85,6 +85,13 @@ icon: "fas fa-keyboard"
     padding: 0 20px;
   }
   
+  .tool-title { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px; color: var(--dark-text); margin-bottom: 5px; }
+  .light-mode .tool-title { color: var(--light-text); }
+  .tool-title span { color: var(--accent); }
+  
+  .tool-subtitle { font-size: 1.1rem; color: var(--dark-text-muted); margin-bottom: 30px; }
+  .light-mode .tool-subtitle { color: var(--light-text-muted); }
+
   .stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -172,8 +179,8 @@ icon: "fas fa-keyboard"
 </header>
 
 <div class="tool-container">
-  <h1 style="color: var(--dark-text); margin-bottom: 5px; font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px;">Text <span style="color: var(--accent);">Counter</span></h1>
-  <p style="color: var(--dark-text-muted); margin-bottom: 30px; font-size: 1.1rem;">Type or paste your text below to get instant real-time statistics.</p>
+  <h1 class="tool-title">Text <span>Counter</span></h1>
+  <p class="tool-subtitle">Type or paste your text below to get instant real-time statistics.</p>
 
   <div class="stats-grid">
     <div class="stat-box">
@@ -202,7 +209,6 @@ icon: "fas fa-keyboard"
 </div>
 
 <main class="info-section">
-  
   <h2>About the Free Text Counter Tool</h2>
   <p>Our online Text Counter is a fast, secure, and highly accurate utility designed to help writers, students, social media managers, and SEO professionals optimize their content. Whether you are drafting a quick tweet, writing an academic essay, or formatting metadata for a website, keeping track of your exact word and character limits is crucial.</p>
   
@@ -218,7 +224,6 @@ icon: "fas fa-keyboard"
 
   <h3>How is Reading Time Calculated?</h3>
   <p>The estimated reading time provided by our tool is calculated based on the average adult reading speed, which is approximately 225 to 250 words per minute. This metric is incredibly valuable for content creators, bloggers, and speechwriters who need to estimate exactly how long it will take their audience to consume their material, helping to improve user engagement and retention.</p>
-
 </main>
 
 <script>
