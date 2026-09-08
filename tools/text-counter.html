@@ -6,9 +6,82 @@ icon: "fas fa-keyboard"
 ---
 
 <style>
+  :root {
+    --dark-bg: #121212;
+    --dark-surface: #111114;
+    --dark-border2: rgba(255,255,255,0.08);
+    --dark-text: #ffffff;
+    --dark-text-muted: rgba(255,255,255,0.75);
+    
+    --light-bg: #f5f5f5;
+    --light-surface: #ffffff;
+    --light-border2: rgba(0,0,0,0.1);
+    --light-text: #111111;
+    --light-text-muted: #444444;
+    
+    --accent: #ff6b4a;
+    --accent-dim: rgba(255,107,74,0.15);
+
+    --dark-header-bg: #181818;
+    --dark-header-border: #2a2a2a;
+    --dark-icon-color: #ccc;
+    --dark-icon-hover-bg: rgba(255,255,255,0.1);
+    
+    --light-header-bg: #ffffff;
+    --light-header-border: #e0e0e0;
+    --light-icon-color: #666;
+    --light-icon-hover-bg: rgba(0,0,0,0.05);
+
+    --dark-input-bg: rgba(255,255,255,0.03);
+    --light-input-bg: rgba(0,0,0,0.02);
+    --skip-red: #ff4d4d;
+    --skip-red-border: rgba(255,77,77,0.3);
+  }
+
+  body { background: var(--dark-bg); color: var(--dark-text); margin: 0; padding: 0; }
+  body.light-mode { background: var(--light-bg); color: var(--light-text); }
+
+  .app-header {
+    position: fixed !important;
+    top: 0; left: 0;
+    width: 100%;
+    height: 50px;
+    background: var(--dark-header-bg);
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    border-bottom: 1px solid var(--dark-header-border);
+    z-index: 10000;
+  }
+  .light-mode .app-header { 
+    background: var(--light-header-bg); 
+    border-bottom: 1px solid var(--light-header-border); 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
+  }
+
+  .header-left, .header-right { display: flex; align-items: center; gap: 10px; }
+  .logo { height: 34px; width: 34px; border-radius: 8px; }
+  .app-title { font-size: 1.1em; font-weight: 600; color: var(--dark-text); margin: 0; }
+  .light-mode .app-title { color: var(--light-text); }
+
+  .header-toggle {
+    background: none; border: none;
+    color: var(--dark-icon-color);
+    font-size: 1.1em; cursor: pointer;
+    width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%; transition: all 0.3s;
+  }
+  .header-toggle:hover { background: var(--dark-icon-hover-bg); }
+  .light-mode .header-toggle { color: var(--light-icon-color); }
+  .light-mode .header-toggle:hover { background: var(--light-icon-hover-bg); }
+
   .tool-container {
     max-width: 800px;
-    margin: 80px auto 40px;
+    margin: 90px auto 40px;
     padding: 0 20px;
   }
   
@@ -27,19 +100,20 @@ icon: "fas fa-keyboard"
     background: var(--dark-surface);
     border: 1px solid var(--dark-border2);
     border-radius: 12px;
-    padding: 15px;
+    padding: 20px 15px;
     text-align: center;
+    transition: background 0.3s, border-color 0.3s;
   }
   .light-mode .stat-box { background: var(--light-surface); border-color: var(--light-border2); }
 
-  .stat-num { font-size: 1.8em; font-weight: bold; color: var(--accent); margin-bottom: 5px; }
-  .stat-label { font-size: 0.85em; color: var(--dark-text-muted); text-transform: uppercase; letter-spacing: 1px; }
+  .stat-num { font-size: 2em; font-weight: 800; color: var(--accent); margin-bottom: 5px; }
+  .stat-label { font-size: 0.85em; color: var(--dark-text-muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
   .light-mode .stat-label { color: var(--light-text-muted); }
 
   #textInput {
     width: 100%;
-    height: 250px;
-    padding: 15px;
+    height: 280px;
+    padding: 18px;
     background: var(--dark-input-bg);
     color: var(--dark-text);
     border: 1px solid var(--dark-border2);
@@ -47,22 +121,59 @@ icon: "fas fa-keyboard"
     resize: vertical;
     outline: none;
     font-size: 16px;
-    line-height: 1.5;
+    line-height: 1.6;
     box-sizing: border-box;
-    transition: border-color 0.3s;
+    transition: border-color 0.3s, background 0.3s;
   }
   .light-mode #textInput { background: var(--light-input-bg); color: var(--light-text); border-color: var(--light-border2); }
   #textInput:focus { border-color: var(--accent); }
   
-  .action-bar { display: flex; justify-content: flex-end; margin-top: 10px; }
-  .clear-btn { background: var(--dark-surface); border: 1px solid var(--dark-border2); color: var(--dark-text); padding: 8px 16px; border-radius: 8px; cursor: pointer; transition: 0.2s; }
+  .action-bar { display: flex; justify-content: flex-end; margin-top: 15px; }
+  .clear-btn { 
+    background: var(--dark-surface); border: 1px solid var(--dark-border2); 
+    color: var(--dark-text); padding: 10px 20px; border-radius: 8px; 
+    cursor: pointer; transition: 0.2s; font-weight: 600; font-size: 0.9em;
+  }
   .light-mode .clear-btn { background: var(--light-surface); border-color: var(--light-border2); color: var(--light-text); }
   .clear-btn:hover { background: var(--skip-red); color: white; border-color: var(--skip-red-border); }
+
+  .info-section {
+    max-width: 800px;
+    margin: 0 auto 80px;
+    padding: 0 20px;
+    color: var(--dark-text-muted);
+    line-height: 1.8;
+    font-size: 1.05rem;
+  }
+  .light-mode .info-section { color: var(--light-text-muted); }
+  .info-section h2 { color: var(--dark-text); font-size: 1.8rem; margin: 50px 0 20px; font-weight: 800; letter-spacing: -0.5px; }
+  .light-mode .info-section h2 { color: var(--light-text); }
+  .info-section h3 { color: var(--dark-text); font-size: 1.3rem; margin: 35px 0 12px; font-weight: 700; }
+  .light-mode .info-section h3 { color: var(--light-text); }
+  .info-section p { margin-bottom: 20px; }
+  .info-section ul { margin-bottom: 25px; padding-left: 10px; list-style: none; }
+  .info-section li { margin-bottom: 12px; position: relative; padding-left: 25px; }
+  .info-section li::before { content: "•"; color: var(--accent); font-size: 1.8rem; position: absolute; left: 0; top: -5px; }
+  .info-section strong { color: var(--dark-text); font-weight: 600; }
+  .light-mode .info-section strong { color: var(--light-text); }
 </style>
 
+<header class="app-header">
+  <div class="header-left">
+    <button class="menu-btn header-toggle" onclick="toggleMenu()" title="Open Menu">&#9776;</button>
+    <img src="/logo.png" alt="TalkRush Logo" class="logo" onerror="this.style.display='none'">
+    <h1 class="app-title">TalkRush</h1>
+  </div>
+  <div class="header-right">
+    <button class="header-toggle" id="themeToggle" title="Toggle Dark/Light Mode">
+      <i class="fas fa-moon"></i>
+    </button>
+  </div>
+</header>
+
 <div class="tool-container">
-  <h1 style="color: var(--accent); margin-bottom: 10px;">Text Counter</h1>
-  <p style="color: var(--dark-text-muted); margin-bottom: 30px;">Type or paste your text below to get instant real-time statistics.</p>
+  <h1 style="color: var(--dark-text); margin-bottom: 5px; font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px;">Text <span style="color: var(--accent);">Counter</span></h1>
+  <p style="color: var(--dark-text-muted); margin-bottom: 30px; font-size: 1.1rem;">Type or paste your text below to get instant real-time statistics.</p>
 
   <div class="stats-grid">
     <div class="stat-box">
@@ -90,20 +201,23 @@ icon: "fas fa-keyboard"
   </div>
 </div>
 
-<main class="info-section" style="max-width: 800px; margin: 40px auto; padding: 20px;">
+<main class="info-section">
   
   <h2>About the Free Text Counter Tool</h2>
-  <p>Our online Text Counter is a fast, secure, and privacy-focused tool designed for writers, students, and SEO professionals. Unlike other tools, your text is processed entirely in your web browser. <strong>No data is ever sent to our servers</strong>, ensuring your sensitive documents remain 100% private.</p>
+  <p>Our online Text Counter is a fast, secure, and highly accurate utility designed to help writers, students, social media managers, and SEO professionals optimize their content. Whether you are drafting a quick tweet, writing an academic essay, or formatting metadata for a website, keeping track of your exact word and character limits is crucial.</p>
+  
+  <p>What sets our tool apart is its commitment to your privacy. The Text Counter processes your input <strong>entirely within your local web browser</strong>. This means your text, private documents, and sensitive drafts are never transmitted to or stored on any external servers. You get instant results without compromising your data security.</p>
 
   <h3>Why Track Character and Word Counts?</h3>
   <ul>
-    <li><strong>Social Media:</strong> Platforms have strict limits (e.g., Twitter: 280 characters, Instagram captions: 2,200 characters).</li>
-    <li><strong>SEO Meta Tags:</strong> Keep your meta titles under 60 characters and descriptions under 160 characters for optimal search engine visibility.</li>
-    <li><strong>Academic Writing:</strong> Easily meet minimum or maximum word count requirements for essays and assignments.</li>
+    <li><strong>Social Media Optimization:</strong> Every major platform has strict character limits. Twitter allows 280 characters, Instagram captions cap at 2,200 characters, and LinkedIn posts allow up to 3,000 characters. Tracking your text ensures your message is delivered without getting awkwardly cut off.</li>
+    <li><strong>SEO Meta Tags:</strong> Search engines like Google display a limited number of characters in search results. To maximize your click-through rate, meta titles should be kept under 60 characters, and meta descriptions should stay under 160 characters.</li>
+    <li><strong>Academic & Professional Writing:</strong> Assignments, college essays, and professional reports often come with strict minimum or maximum word count requirements. A real-time counter helps you pace your writing and hit your targets effortlessly.</li>
+    <li><strong>Ad Copywriting:</strong> Google Ads and Facebook Ads require highly precise character limits for headlines and descriptions to ensure your campaigns display correctly across all devices.</li>
   </ul>
 
   <h3>How is Reading Time Calculated?</h3>
-  <p>The estimated reading time is based on the average adult reading speed of 225 words per minute. This feature is particularly useful for bloggers and speechwriters who need to estimate how long it will take an audience to consume their content.</p>
+  <p>The estimated reading time provided by our tool is calculated based on the average adult reading speed, which is approximately 225 to 250 words per minute. This metric is incredibly valuable for content creators, bloggers, and speechwriters who need to estimate exactly how long it will take their audience to consume their material, helping to improve user engagement and retention.</p>
 
 </main>
 
