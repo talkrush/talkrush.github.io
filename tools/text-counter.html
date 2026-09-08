@@ -83,6 +83,7 @@ icon: "fas fa-keyboard"
     max-width: 800px;
     margin: 90px auto 40px;
     padding: 0 20px;
+    width: 100%;
   }
   
   .tool-title { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px; color: var(--dark-text); margin-bottom: 5px; }
@@ -97,6 +98,7 @@ icon: "fas fa-keyboard"
     grid-template-columns: repeat(4, 1fr);
     gap: 15px;
     margin-bottom: 20px;
+    width: 100%;
   }
 
   @media (max-width: 600px) {
@@ -110,10 +112,11 @@ icon: "fas fa-keyboard"
     padding: 20px 15px;
     text-align: center;
     transition: background 0.3s, border-color 0.3s;
+    min-width: 0;
   }
   .light-mode .stat-box { background: var(--light-surface); border-color: var(--light-border2); }
 
-  .stat-num { font-size: 2em; font-weight: 800; color: var(--accent); margin-bottom: 5px; }
+  .stat-num { font-size: 2em; font-weight: 800; color: var(--accent); margin-bottom: 5px; word-break: break-word; }
   .stat-label { font-size: 0.85em; color: var(--dark-text-muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
   .light-mode .stat-label { color: var(--light-text-muted); }
 
@@ -129,7 +132,6 @@ icon: "fas fa-keyboard"
     outline: none;
     font-size: 16px;
     line-height: 1.6;
-    box-sizing: border-box;
     transition: border-color 0.3s, background 0.3s;
   }
   .light-mode #textInput { background: var(--light-input-bg); color: var(--light-text); border-color: var(--light-border2); }
@@ -151,6 +153,7 @@ icon: "fas fa-keyboard"
     color: var(--dark-text-muted);
     line-height: 1.8;
     font-size: 1.05rem;
+    width: 100%;
   }
   .light-mode .info-section { color: var(--light-text-muted); }
   .info-section h2 { color: var(--dark-text); font-size: 1.8rem; margin: 50px 0 20px; font-weight: 800; letter-spacing: -0.5px; }
@@ -209,21 +212,53 @@ icon: "fas fa-keyboard"
 </div>
 
 <main class="info-section">
-  <h2>About the Free Text Counter Tool</h2>
-  <p>Our online Text Counter is a fast, secure, and highly accurate utility designed to help writers, students, social media managers, and SEO professionals optimize their content. Whether you are drafting a quick tweet, writing an academic essay, or formatting metadata for a website, keeping track of your exact word and character limits is crucial.</p>
+  <h2>Accurate, Real-Time Text Analysis</h2>
+  <p>The Free Online Text Counter by TalkRush provides creators, copywriters, researchers, and developers with a dependable environment for calculating length metrics dynamically. Digital communication requires adherence to strict parameters across every publishing channel. Search snippets truncate premature characters, email clients limit subject lines, and academic papers require rigid adherence to minimum and maximum word counts. Our utility gives you immediate visibility into every structural metric so you can refine your message before hitting send.</p>
   
-  <p>What sets our tool apart is its commitment to your privacy. The Text Counter processes your input <strong>entirely within your local web browser</strong>. This means your text, private documents, and sensitive drafts are never transmitted to or stored on any external servers. You get instant results without compromising your data security.</p>
+  <p>Unlike third-party word processing suites that require bulky desktop installations or cloud services that ingest your private documents, this text tool executes directly in your browser. Every character count, space calculation, and paragraph breakdown is evaluated using client-side JavaScript. This architectural design ensures that confidential manuscripts, unreleased company press releases, and personal journals remain strictly isolated on your machine.</p>
 
-  <h3>Why Track Character and Word Counts?</h3>
+  <h3>How to Use the Text Counter</h3>
   <ul>
-    <li><strong>Social Media Optimization:</strong> Every major platform has strict character limits. Twitter allows 280 characters, Instagram captions cap at 2,200 characters, and LinkedIn posts allow up to 3,000 characters. Tracking your text ensures your message is delivered without getting awkwardly cut off.</li>
-    <li><strong>SEO Meta Tags:</strong> Search engines like Google display a limited number of characters in search results. To maximize your click-through rate, meta titles should be kept under 60 characters, and meta descriptions should stay under 160 characters.</li>
-    <li><strong>Academic & Professional Writing:</strong> Assignments, college essays, and professional reports often come with strict minimum or maximum word count requirements. A real-time counter helps you pace your writing and hit your targets effortlessly.</li>
-    <li><strong>Ad Copywriting:</strong> Google Ads and Facebook Ads require highly precise character limits for headlines and descriptions to ensure your campaigns display correctly across all devices.</li>
+    <li><strong>Paste or Type Content:</strong> Place your cursor inside the text area and paste existing drafts, or begin typing your content directly into the box.</li>
+    <li><strong>Monitor Live Statistics:</strong> The analytics dashboard above updates instantly upon every single keystroke, showing total words, total characters, paragraphs, and reading duration.</li>
+    <li><strong>Refine Based on Platform Targets:</strong> Use the live numbers to trim unnecessary phrasing, optimize your sentences, or add required detail to meet specific project quotas.</li>
+    <li><strong>Reset for New Drafts:</strong> Click the dedicated Clear button at any point to completely wipe the editor and prepare for your next assignment.</li>
   </ul>
 
-  <h3>How is Reading Time Calculated?</h3>
-  <p>The estimated reading time provided by our tool is calculated based on the average adult reading speed, which is approximately 225 to 250 words per minute. This metric is incredibly valuable for content creators, bloggers, and speechwriters who need to estimate exactly how long it will take their audience to consume their material, helping to improve user engagement and retention.</p>
+  <h3>Understanding Your Text Statistics</h3>
+  <p>Our counter evaluates multiple independent linguistic parameters to give you a comprehensive picture of your draft's structure and readability:</p>
+  <ul>
+    <li><strong>Total Words:</strong> Counted by scanning text boundaries separated by spaces, tabs, and line breaks. Repeated spaces are normalized automatically so accidental double-spacing does not artificially inflate your total count.</li>
+    <li><strong>Total Characters:</strong> Evaluates every single letter, number, punctuation mark, special symbol, and whitespace character. This is the exact metric relied upon by digital advertising platforms, microblogging engines, and SMS protocols.</li>
+    <li><strong>Paragraphs:</strong> Identifies distinct text blocks separated by line breaks. Single sentences separated by multiple carriage returns are calculated cleanly to reflect structural layout.</li>
+    <li><strong>Estimated Reading Time:</strong> Computed using the internationally recognized benchmark of 225 words per minute. This allows writers to gauge audience attention spans accurately for blog posts, email newsletters, and speeches.</li>
+  </ul>
+
+  <h3>Standard Character Limits for Popular Platforms</h3>
+  <ul>
+    <li><strong>Twitter / X:</strong> Standard organic posts are limited to 280 characters. Premium accounts can write extended posts up to 25,000 characters.</li>
+    <li><strong>Instagram:</strong> Post captions allow up to 2,200 characters, though captions truncate in mobile feeds after roughly 125 characters. Your account bio supports up to 150 characters.</li>
+    <li><strong>LinkedIn:</strong> Standard updates allow 3,000 characters. Professional profile summary sections allow up to 2,600 characters to outline work history.</li>
+    <li><strong>Google Search Meta Tags:</strong> Optimal SEO titles must stay between 50 and 60 characters to avoid desktop and mobile truncation. Meta descriptions perform best between 140 and 160 characters.</li>
+    <li><strong>Digital Advertising:</strong> Google responsive search ads permit up to 30 characters per headline and 90 characters per description line.</li>
+  </ul>
+
+  <h2>Frequently Asked Questions (FAQ)</h2>
+
+  <h3>Does this tool store, save, or transmit my written text?</h3>
+  <p>No. Your input is processed entirely inside your local browser runtime memory. Your sentences, drafts, and sensitive materials are never transmitted over network protocols, never saved to remote cloud databases, and never logged on our servers. Refreshing the browser or clicking the clear button erases the content permanently.</p>
+
+  <h3>Are spaces and punctuation marks counted in the character total?</h3>
+  <p>Yes. The primary character metric measures complete string length, which includes alphabetical characters, numerals, punctuation marks, symbols, and spaces. Because social media platforms and programmatic database limits evaluate spaces as individual characters, this approach guarantees your text meets exact real-world publishing requirements.</p>
+
+  <h3>How is the estimated reading duration calculated?</h3>
+  <p>The reading duration metric divides the aggregate word count by an average silent reading speed of 225 words per minute. If you are preparing content for public speaking or podcast scripts, human vocal delivery is slightly slower, averaging around 130 to 150 words per minute.</p>
+
+  <h3>Is there any word or character limit on this tool?</h3>
+  <p>There is no artificial restriction imposed on the tool. You can freely paste entire book chapters, lengthy academic dissertations, or extensive software code blocks containing tens of thousands of words. Performance remains instantaneous as modern browser engines handle large strings effortlessly.</p>
+
+  <h3>Can I use this text counter without an active internet connection?</h3>
+  <p>Yes. Once this webpage has loaded completely in your web browser, all computational functions are handled entirely by client-side code on your local hardware. You can disconnect from your internet connection and continue using the tool without interruption.</p>
 </main>
 
 <script>
