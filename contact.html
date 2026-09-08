@@ -1,0 +1,379 @@
+---
+layout: default
+title: "Contact Us"
+description: "Get in touch with the TalkRush Tools team. Send feedback, report bugs, or request new online utilities and web tools."
+---
+
+<style>
+  body {
+    margin: 0;
+    color: #333;
+  }
+
+  .container {
+    width: 100%;
+    padding: 60px 10px 0 10px;
+    box-sizing: border-box;
+  }
+
+  .container * {
+    box-sizing: border-box;
+  }
+
+  h1, h2 {
+    text-align: center;
+    color: #222;
+  }
+  .light-mode h1, .light-mode h2 {
+    color: #222;
+  }
+
+  .intro {
+    text-align: center;
+    color: #555;
+    font-size: 15px;
+    margin: 0 auto 30px;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+  .light-mode .intro {
+    color: #666;
+  }
+
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 24px;
+    max-width: 1000px;
+    margin: 40px auto 60px;
+    align-items: stretch;
+  }
+
+  .contact-card {
+    background: radial-gradient(circle at 0% 0%, #1c1417 0%, #121015 70%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 30px 26px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    color: #e4e4e7;
+  }
+
+  .form-card {
+    position: relative;
+  }
+
+  .form-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 20px;
+    right: 20px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 107, 74, 0.4), transparent);
+  }
+
+  .card-head-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff !important;
+    text-align: left;
+    margin: 0 0 20px;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-label {
+    font-size: 12.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #a0a0ab;
+  }
+
+  .form-input, .form-textarea {
+    width: 100%;
+    background: #17151c;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 14px;
+    transition: all 0.25s ease;
+    outline: none;
+  }
+
+  .form-input:focus, .form-textarea:focus {
+    border-color: #ff6b4a;
+    background: #1a1721;
+    box-shadow: 0 0 0 3px rgba(255, 107, 74, 0.18);
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .submit-btn {
+    width: 100%;
+    background: #ff6b4a;
+    color: #ffffff;
+    border: none;
+    padding: 11px 16px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background 0.2s, transform 0.1s;
+    margin-top: 5px;
+  }
+
+  .submit-btn svg {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+  }
+
+  .submit-btn:hover {
+    background: #ff5535;
+  }
+
+  .submit-btn:active {
+    transform: scale(0.98);
+  }
+
+  .info-card {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 32px 24px;
+  }
+
+  .email-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    background: rgba(255, 107, 74, 0.1);
+    border: 1px solid rgba(255, 107, 74, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    box-shadow: 0 8px 20px rgba(255, 107, 74, 0.15);
+  }
+
+  .email-icon-wrapper svg {
+    width: 28px;
+    height: 28px;
+    fill: #ff6b4a;
+  }
+
+  .info-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 10px;
+  }
+
+  .info-card p {
+    font-size: 13.5px;
+    color: #8e8e98;
+    line-height: 1.6;
+    margin: 0 0 20px;
+  }
+
+  .email-copy-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 320px;
+    background: #17151c;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 6px 6px 6px 14px;
+    margin-bottom: 12px;
+    gap: 8px;
+  }
+
+  .email-display-text {
+    font-size: 13px;
+    color: #ffffff;
+    font-weight: 500;
+    user-select: all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .copy-action-btn {
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #25222d;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    padding: 0;
+  }
+
+  .copy-action-btn:hover {
+    background: #ff6b4a;
+    border-color: #ff6b4a;
+  }
+
+  .email-mailto-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 320px;
+    background: #1e1b24;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.25s ease;
+  }
+
+  .email-mailto-btn:hover {
+    background: #ff6b4a;
+    border-color: #ff6b4a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 107, 74, 0.35);
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding-top: 30px;
+    }
+
+    .contact-layout {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .contact-card {
+      padding: 24px 18px;
+    }
+  }
+</style>
+
+{% include header.html %}
+
+<div class="container">
+  <h1>Contact Us</h1>
+  <p class="intro">Have questions, feedback, or ideas for a new tool? We'd love to hear from you. Send us a message below or contact us directly via email.</p>
+
+  <div class="contact-layout">
+    
+    <div class="contact-card form-card">
+      <h2 class="card-head-title">Send a Message</h2>
+      <form class="contact-form" action="https://formsubmit.co/kumarsharma2580@gmail.com" method="POST">
+        <input type="hidden" name="_captcha" value="false">
+        
+        <div class="form-group">
+          <label class="form-label">Your Name</label>
+          <input type="text" name="name" class="form-input" placeholder="Your Name" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Your Email</label>
+          <input type="email" name="email" class="form-input" placeholder="Your Email" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea name="message" class="form-textarea" placeholder="Your Message..." required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+          <span>Send Message</span>
+        </button>
+      </form>
+    </div>
+
+    <div class="contact-card info-card">
+      <div class="email-icon-wrapper">
+        <svg viewBox="0 0 24 24">
+          <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+      </div>
+      <h3>Email Support</h3>
+      <p>Have an urgent query or tool suggestion? Contact us directly anytime.</p>
+      
+      <div class="email-copy-box">
+        <span id="support-email-text" class="email-display-text">kumarsharma2580@gmail.com</span>
+        <button id="copy-action-btn" class="copy-action-btn" type="button" onclick="copySupportEmail()" title="Copy email">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+        </button>
+      </div>
+
+      <a href="mailto:kumarsharma2580@gmail.com" class="email-mailto-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
+        Email Us
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function copySupportEmail() {
+    var email = document.getElementById('support-email-text').innerText;
+    var btn = document.getElementById('copy-action-btn');
+    
+    var copySvg = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>';
+    var checkSvg = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+
+    function onDone() {
+      btn.innerHTML = checkSvg;
+      setTimeout(function() {
+        btn.innerHTML = copySvg;
+      }, 2000);
+    }
+
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(email).then(onDone);
+    } else {
+      var tempInput = document.createElement('input');
+      tempInput.value = email;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+      onDone();
+    }
+  }
+</script>
