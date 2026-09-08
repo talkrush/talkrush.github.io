@@ -1,0 +1,331 @@
+---
+layout: default
+title: "Free QR Code Generator - Create QR Codes Online"
+description: "Instantly create custom QR codes for URLs, text, Wi-Fi, and contact details. 100% free, secure, and generated directly in your browser."
+icon: "fas fa-qrcode"
+---
+
+<style>
+  :root {
+    --dark-bg: #121212;
+    --dark-surface: #111114;
+    --dark-border2: rgba(255,255,255,0.08);
+    --dark-text: #ffffff;
+    --dark-text-muted: rgba(255,255,255,0.75);
+    
+    --light-bg: #f5f5f5;
+    --light-surface: #ffffff;
+    --light-border2: rgba(0,0,0,0.1);
+    --light-text: #111111;
+    --light-text-muted: #444444;
+    
+    --accent: #ff6b4a;
+    --accent-hover: #ff5535;
+    --accent-dim: rgba(255,107,74,0.15);
+
+    --dark-header-bg: #181818;
+    --dark-header-border: #2a2a2a;
+    --dark-icon-color: #ccc;
+    --dark-icon-hover-bg: rgba(255,255,255,0.1);
+    
+    --light-header-bg: #ffffff;
+    --light-header-border: #e0e0e0;
+    --light-icon-color: #666;
+    --light-icon-hover-bg: rgba(0,0,0,0.05);
+
+    --dark-input-bg: rgba(255,255,255,0.03);
+    --light-input-bg: rgba(0,0,0,0.02);
+  }
+
+  body { background: var(--dark-bg); color: var(--dark-text); margin: 0; padding: 0; }
+  body.light-mode { background: var(--light-bg); color: var(--light-text); }
+
+  .app-header {
+    position: fixed !important;
+    top: 0; left: 0;
+    width: 100%;
+    height: 50px;
+    background: var(--dark-header-bg);
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    border-bottom: 1px solid var(--dark-header-border);
+    z-index: 10000;
+  }
+  .light-mode .app-header { 
+    background: var(--light-header-bg); 
+    border-bottom: 1px solid var(--light-header-border); 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
+  }
+
+  .header-left, .header-right { display: flex; align-items: center; gap: 10px; }
+  .logo { height: 34px; width: 34px; border-radius: 8px; }
+  .app-title { font-size: 1.1em; font-weight: 600; color: var(--dark-text); margin: 0; }
+  .light-mode .app-title { color: var(--light-text); }
+
+  .header-toggle {
+    background: none; border: none;
+    color: var(--dark-icon-color);
+    font-size: 1.1em; cursor: pointer;
+    width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%; transition: all 0.3s;
+  }
+  .header-toggle:hover { background: var(--dark-icon-hover-bg); }
+  .light-mode .header-toggle { color: var(--light-icon-color); }
+  .light-mode .header-toggle:hover { background: var(--light-icon-hover-bg); }
+
+  .tool-container {
+    max-width: 650px;
+    margin: 90px auto 40px;
+    padding: 0 20px;
+  }
+  
+  .tool-title { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px; color: var(--dark-text); margin-bottom: 5px; }
+  .light-mode .tool-title { color: var(--light-text); }
+  .tool-title span { color: var(--accent); }
+  
+  .tool-subtitle { font-size: 1.1rem; color: var(--dark-text-muted); margin-bottom: 30px; }
+  .light-mode .tool-subtitle { color: var(--light-text-muted); }
+
+  .generator-box {
+    background: var(--dark-surface);
+    border: 1px solid var(--dark-border2);
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+  .light-mode .generator-box {
+    background: var(--light-surface);
+    border-color: var(--light-border2);
+  }
+
+  .input-label {
+    display: block;
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--dark-text);
+  }
+  .light-mode .input-label { color: var(--light-text); }
+
+  #qrInput {
+    width: 100%;
+    padding: 15px;
+    background: var(--dark-input-bg);
+    color: var(--dark-text);
+    border: 1px solid var(--dark-border2);
+    border-radius: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+    box-sizing: border-box;
+    transition: border-color 0.3s, background 0.3s;
+    outline: none;
+    resize: vertical;
+    min-height: 100px;
+  }
+  .light-mode #qrInput {
+    background: var(--light-input-bg);
+    color: var(--light-text);
+    border-color: var(--light-border2);
+  }
+  #qrInput:focus { border-color: var(--accent); }
+
+  .btn-primary {
+    width: 100%;
+    padding: 15px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-primary:hover { background: var(--accent-hover); }
+
+  .qr-display-area {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+  }
+  .qr-display-area.active { display: flex; }
+
+  #qrcode {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    margin-bottom: 20px;
+  }
+  
+  .download-btn {
+    background: transparent;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .download-btn:hover {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  .info-section {
+    max-width: 800px;
+    margin: 0 auto 80px;
+    padding: 0 20px;
+    color: var(--dark-text-muted);
+    line-height: 1.8;
+    font-size: 1.05rem;
+  }
+  .light-mode .info-section { color: var(--light-text-muted); }
+  .info-section h2 { color: var(--dark-text); font-size: 1.8rem; margin: 50px 0 20px; font-weight: 800; letter-spacing: -0.5px; }
+  .light-mode .info-section h2 { color: var(--light-text); }
+  .info-section h3 { color: var(--dark-text); font-size: 1.3rem; margin: 35px 0 12px; font-weight: 700; }
+  .light-mode .info-section h3 { color: var(--light-text); }
+  .info-section p { margin-bottom: 20px; }
+  .info-section ul { margin-bottom: 25px; padding-left: 10px; list-style: none; }
+  .info-section li { margin-bottom: 12px; position: relative; padding-left: 25px; }
+  .info-section li::before { content: "•"; color: var(--accent); font-size: 1.8rem; position: absolute; left: 0; top: -5px; }
+  .info-section strong { color: var(--dark-text); font-weight: 600; }
+  .light-mode .info-section strong { color: var(--light-text); }
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<header class="app-header">
+  <div class="header-left">
+    <button class="menu-btn header-toggle" onclick="toggleMenu()" title="Open Menu">&#9776;</button>
+    <img src="/logo.png" alt="TalkRush Logo" class="logo" onerror="this.style.display='none'">
+    <h1 class="app-title">TalkRush</h1>
+  </div>
+  <div class="header-right">
+    <button class="header-toggle" id="themeToggle" title="Toggle Dark/Light Mode">
+      <i class="fas fa-moon"></i>
+    </button>
+  </div>
+</header>
+
+<div class="tool-container">
+  <h1 class="tool-title">QR Code <span>Generator</span></h1>
+  <p class="tool-subtitle">Instantly transform URLs, plain text, or contact information into scannable QR codes.</p>
+
+  <div class="generator-box">
+    <label class="input-label" for="qrInput">Enter Text or Website URL</label>
+    <textarea id="qrInput" placeholder="https://example.com/ or any text you want to share..."></textarea>
+    
+    <button class="btn-primary" id="generateBtn">
+      <i class="fas fa-qrcode"></i> Generate QR Code
+    </button>
+
+    <div class="qr-display-area" id="qrDisplayArea">
+      <div id="qrcode"></div>
+      <button class="download-btn" id="downloadBtn">
+        <i class="fas fa-download"></i> Download PNG
+      </button>
+    </div>
+  </div>
+</div>
+
+<main class="info-section">
+  
+  <h2>Bridge the Physical and Digital Worlds</h2>
+  <p>QR codes have become an essential tool for connecting real-world interactions with digital experiences. Whether you are a business owner looking to share a digital menu, a marketer designing promotional flyers, or just someone wanting to easily share your Wi-Fi password with guests, our Free QR Code Generator makes the process completely effortless.</p>
+  
+  <p>Our tool is designed for speed and simplicity. You don't need to sign up for an account, pay any subscription fees, or deal with expiring links. The codes you generate here are static and permanent—they will never stop working as long as the destination URL or text remains active.</p>
+
+  <h3>Popular Ways to Use QR Codes</h3>
+  <ul>
+    <li><strong>Website Links & Social Media:</strong> Instead of asking people to type out long URLs, print a QR code on your business cards, flyers, or storefront windows to direct customers straight to your website, Instagram, or YouTube channel.</li>
+    <li><strong>Digital Menus & Portfolios:</strong> Restaurants and freelancers can link directly to a PDF or mobile-friendly webpage, providing a touchless and instantly updatable experience for their clients.</li>
+    <li><strong>Wi-Fi Access:</strong> Stop spelling out complicated network passwords. Generate a QR code containing your network credentials, allowing guests to connect instantly with a simple scan from their smartphone camera.</li>
+    <li><strong>Contact Information:</strong> Encode your email address, phone number, or a full vCard so network contacts can save your details to their phone instantly without typing a single letter.</li>
+  </ul>
+
+  <h3>Privacy by Design</h3>
+  <p>We believe your data is your own. Unlike many commercial QR code generators that route your links through tracking servers to harvest user data, our generator runs entirely in your local web browser. The text or URL you enter is converted into a QR code visually on your own device. We do not store your inputs, we do not track the scans, and we do not inject advertisements into your destination links. It is completely safe, private, and secure.</p>
+
+  <h3>Tips for Best Results</h3>
+  <p>When generating your code, keep in mind that the more text you enter, the denser and more complex the visual pattern becomes. Highly dense QR codes can be difficult for older smartphone cameras to scan, especially if printed in a small size. For the best scanning reliability, keep your URLs as short as possible. Additionally, always remember to test scan your downloaded QR code with your own phone before adding it to any printed materials.</p>
+
+</main>
+
+<script>
+  const qrInput = document.getElementById('qrInput');
+  const generateBtn = document.getElementById('generateBtn');
+  const qrDisplayArea = document.getElementById('qrDisplayArea');
+  const qrcodeContainer = document.getElementById('qrcode');
+  const downloadBtn = document.getElementById('downloadBtn');
+
+  function createQRCode() {
+    const text = qrInput.value.trim();
+    
+    if (!text) {
+      alert("Please enter some text or a URL first.");
+      qrInput.focus();
+      return;
+    }
+
+    qrcodeContainer.innerHTML = "";
+    
+    new QRCode(qrcodeContainer, {
+      text: text,
+      width: 220,
+      height: 220,
+      colorDark : "#000000",
+      colorLight : "#ffffff",
+      correctLevel : QRCode.CorrectLevel.H
+    });
+
+    qrDisplayArea.classList.add('active');
+  }
+
+  generateBtn.addEventListener('click', createQRCode);
+
+  qrInput.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      createQRCode();
+    }
+  });
+
+  downloadBtn.addEventListener('click', function() {
+    const canvas = qrcodeContainer.querySelector('canvas');
+    const img = qrcodeContainer.querySelector('img');
+    let dataUrl = '';
+
+    if (canvas) {
+      dataUrl = canvas.toDataURL("image/png");
+    } else if (img) {
+      dataUrl = img.src;
+    }
+
+    if (dataUrl) {
+      const link = document.createElement('a');
+      link.href = dataUrl;
+      link.download = 'talkrush-qrcode.png';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  });
+</script>
