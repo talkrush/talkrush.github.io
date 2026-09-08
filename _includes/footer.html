@@ -39,7 +39,7 @@
 
   .footer-nav-columns {
     display: grid;
-    grid-template-columns: repeat(3, minmax(130px, 1fr));
+    grid-template-columns: repeat(2, minmax(140px, 1fr));
     gap: 25px 40px;
     flex: 1;
   }
@@ -163,17 +163,11 @@
     }
     .footer-nav-columns {
       width: 100%;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 20px 15px;
     }
     .footer-share-section {
       width: 100%;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .footer-nav-columns {
-      grid-template-columns: repeat(2, 1fr);
     }
   }
 </style>
@@ -186,22 +180,15 @@
         <div class="footer-col">
           <span class="col-heading">Tools</span>
           <a href="/" class="footer-link">Home</a>
-          <a href="/tools/text-counter/" class="footer-link">Text Counter</a>
-          <a href="/tools/password-generator/" class="footer-link">Password Generator</a>
-          <a href="/tools/qr-code-generator/" class="footer-link">QR Generator</a>
-          <a href="/tools/case-converter/" class="footer-link">Case Converter</a>
-        </div>
-        
-        <div class="footer-col">
-          <span class="col-heading">Resources</span>
-          <a href="/tools/" class="footer-link">All Tools</a>
-          <a href="/blog.html" class="footer-link">Blog</a>
-          <a href="/faq.html" class="footer-link">FAQs</a>
-          <a href="/disclaimer.html" class="footer-link">Disclaimer</a>
+          <a href="/tools/text-counter.html" class="footer-link">Text Counter</a>
+          <a href="/tools/password-generator.html" class="footer-link">Password Generator</a>
+          <a href="/tools/qr-code-generator.html" class="footer-link">QR Generator</a>
+          <a href="/tools/case-converter.html" class="footer-link">Case Converter</a>
         </div>
         
         <div class="footer-col">
           <span class="col-heading">Company</span>
+          <a href="/blog.html" class="footer-link">Blog</a>
           <a href="/about.html" class="footer-link">About Us</a>
           <a href="/contact.html" class="footer-link">Contact Us</a>
           <a href="/privacy-policy.html" class="footer-link">Privacy Policy</a>
