@@ -1,0 +1,58 @@
+<script type="application/ld+json">
+{
+  {% if page.layout == "post" or page.is_blog %}
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ page.title | jsonify }},
+  "description": {{ page.description | jsonify }},
+  "datePublished": "{% if page.date %}{{ page.date | date_to_xmlschema }}{% else %}{{ site.time | date_to_xmlschema }}{% endif %}",
+  "dateModified": "{% if page.last_modified_at %}{{ page.last_modified_at | date_to_xmlschema }}{% else %}{{ site.time | date_to_xmlschema }}{% endif %}",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": {{ page.url | absolute_url | jsonify }}
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Aman Kumar"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "TalkRush",
+    "url": {{ site.url | jsonify }},
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ site.url }}/logo.png"
+    }
+  }
+  {% elsif page.is_tool %}
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": {{ page.title | jsonify }},
+  "url": {{ page.url | absolute_url | jsonify }},
+  "description": {{ page.description | jsonify }},
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires JavaScript. Requires HTML5.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "creator": {
+    "@type": "Person",
+    "name": "Aman Kumar"
+  }
+  {% else %}
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "TalkRush",
+  "url": {{ site.url | jsonify }},
+  "description": {{ page.description | default: site.description | jsonify }},
+  "publisher": {
+    "@type": "Organization",
+    "name": "TalkRush",
+    "url": {{ site.url | jsonify }}
+  }
+  {% endif %}
+}
+</script>
