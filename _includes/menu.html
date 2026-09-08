@@ -294,17 +294,17 @@ document.addEventListener('DOMContentLoaded', function () {
   if (shareButton) {
     shareButton.addEventListener("click", () => {
       const shareUrl = window.location.origin;
-      const shareText = "Free, secure, and client-side online web tools: " + shareUrl;
+      const shareMessage = "Free, secure, and client-side online web tools";
 
       if (navigator.share) {
         navigator.share({
           title: "TalkRush Tools",
-          text: shareText,
+          text: shareMessage,
           url: shareUrl
         }).catch(() => {});
         toggleMenu();
       } else if (navigator.clipboard) {
-        navigator.clipboard.writeText(shareText).then(() => {
+        navigator.clipboard.writeText(shareMessage + ": " + shareUrl).then(() => {
           alert("Link copied to clipboard!");
         });
         toggleMenu();
