@@ -40,7 +40,8 @@
 </head>
 <body>
   {{ content }}
-  
+
+  {% include menu.html %}
   {% include footer.html %}
   <script src="{{ '/script.js' | relative_url }}"></script>
 </body>
