@@ -249,7 +249,7 @@ icon: "fas fa-image"
   }
   .download-btn:hover { background: var(--accent-hover); }
 
-  .info-section { max-width: 1000px; margin: 0 auto 80px; padding: 0 20px; color: var(--dark-text-muted); line-height: 1.8; font-size: 1.05rem; }
+  .info-section { max-width: 1000px; margin: 0 auto 80px; padding: 0 20px; color: var(--dark-text-muted); line-height: 1.8; font-size: 1.05rem; width: 100%; }
   .light-mode .info-section { color: var(--light-text-muted); }
   .info-section h2 { color: var(--dark-text); font-size: 1.8rem; margin: 50px 0 20px; font-weight: 800; letter-spacing: -0.5px; }
   .light-mode .info-section h2 { color: var(--light-text); }
@@ -333,21 +333,50 @@ icon: "fas fa-image"
 </div>
 
 <main class="info-section">
-  <h2>Optimize Your Images Online</h2>
-  <p>High-resolution images look great, but they can slow down your website, consume excessive storage space, and fail to upload on platforms with strict file size limits. Our Free Image Resizer and Compressor is built to solve these problems by giving you full control over your image dimensions, quality, and formatting.</p>
+  <h2>Optimize, Compress, and Refine Your Visual Assets</h2>
+  <p>Visual content forms the foundation of modern digital communication, electronic commerce, web development, and social media engagement. However, unoptimized image assets captured by high-resolution smartphone sensors or professional mirrorless cameras routinely generate file sizes ranging from 5MB to upwards of 25MB. Deploying uncompressed images across websites or mobile applications causes slow page loads, exhausts server bandwidth, degrades mobile user experiences, and triggers severe search ranking penalties under search engine speed evaluation guidelines. The TalkRush Free Image Resizer and Compressor provides a browser-native studio for managing resolution dimensions, quality factors, directional orientation, and format encapsulation in real time.</p>
   
-  <p>The best part? <strong>Your images never leave your device.</strong> Utilizing modern HTML5 Canvas technology, all image resizing, flipping, and compression happens securely within your local web browser. We do not upload your personal photos to any external servers, ensuring 100% privacy and security.</p>
+  <p>Privacy and efficiency stand at the center of our engineering approach. While legacy cloud-based compression utilities force you to upload private graphics, sensitive legal IDs, or confidential business mockups to remote server farms, our tool executes <strong>entirely within your local web browser</strong> using the hardware-accelerated HTML5 Canvas engine. Your images are parsed, interpolated, resampled, compressed, and encoded directly inside your local memory heap. Your media never traverses external networks, never touches third-party storage buckets, and leaves zero footprint on any remote machine.</p>
 
-  <h3>Features of the Image Editor</h3>
+  <h3>How to Resize and Compress Images</h3>
   <ul>
-    <li><strong>Pixel-Perfect Resizing:</strong> Precisely adjust the width and height of your images. Keep the "Lock Aspect Ratio" box checked to ensure your photos don't look stretched or distorted.</li>
-    <li><strong>Quality Compression:</strong> Use the intuitive quality slider to drastically reduce file sizes for JPG and WEBP formats, making your images perfectly optimized for web performance and faster loading speeds.</li>
-    <li><strong>Image Flipping:</strong> Easily correct mirrored selfies or change the compositional direction of a photo by flipping it horizontally or vertically with a single click.</li>
-    <li><strong>Format Conversion:</strong> Seamlessly convert your images into highly optimized formats like WEBP for web use, JPG for standard photography, or PNG to maintain lossless quality.</li>
+    <li><strong>Select or Drop Your File:</strong> Drag any standard image format (JPG, PNG, WEBP, or BMP) directly into the dashed drop area, or tap the container to browse your local device files.</li>
+    <li><strong>Adjust Target Resolution:</strong> Modify the width or height input boxes. With the aspect ratio lock toggled on, altering one parameter automatically scales the other proportionally, preventing image stretching or awkward warping.</li>
+    <li><strong>Apply Orientation Corrections:</strong> Correct mirrored camera selfies or reorient graphic banners with instantaneous horizontal and vertical flip operations.</li>
+    <li><strong>Configure Compression Density:</strong> Drag the quality slider to calibrate the target file compression. Lowering the slider to between 75% and 85% delivers substantial byte reductions while retaining pristine optical fidelity.</li>
+    <li><strong>Choose Container Format and Export:</strong> Select your preferred destination format (WEBP, JPG, or PNG) and click the Download button to save the optimized file instantly to your storage drive.</li>
   </ul>
 
-  <h3>Why Image Optimization Matters for SEO</h3>
-  <p>Search engines like Google use page loading speed as a critical ranking factor. Large, unoptimized images are the leading cause of slow websites. By compressing your images and converting them to next-gen formats like WEBP, you significantly improve your website's performance, leading to better search rankings and improved user experience.</p>
+  <h3>Choosing the Optimal File Format: WebP vs. JPG vs. PNG</h3>
+  <p>Selecting the appropriate graphics encapsulation format plays an indispensable role in maintaining both visual fidelity and optimal performance parameters:</p>
+  <ul>
+    <li><strong>WEBP (Modern Web Standard):</strong> Engineered by Google, WebP provides superior lossy and lossless compression compared to legacy formats. Converting high-resolution JPG or PNG assets to WebP typically slashes payload footprints by 30% to 45% without discernible loss in visual quality, while simultaneously supporting alpha-channel transparency.</li>
+    <li><strong>JPG / JPEG (Photographic Standardization):</strong> The universally adopted standard for photographic images and rich color gradients. JPG operates through lossy discrete cosine transform compression, making it ideal for e-commerce product catalogs, social media shares, and legacy software compatibility.</li>
+    <li><strong>PNG (Lossless Precision):</strong> Employs DEFLATE algorithm compression to safeguard pixel-level precision. PNG is essential for corporate branding logos, user interface mockups, sharp typographic screenshots, and graphics requiring transparent backgrounds.</li>
+  </ul>
+
+  <h3>The Impact of Image Optimization on Core Web Vitals and SEO</h3>
+  <p>Modern search engines evaluate real-world user page speed through Core Web Vitals metrics, prominently featuring Largest Contentful Paint (LCP). Large hero banners and product images are frequently the primary culprits causing LCP failures. Serving a 3.5MB uncompressed JPEG asset over a cellular connection forces the browser to spend seconds downloading and decoding data before painting the primary viewport. By resizing raw camera files to exact display dimensions (e.g., resizing a 4000px asset down to 1200px) and compressing to WebP, file weights drop below 150KB, ensuring rapid paint execution and improved search engine rankings.</p>
+
+  <h2>Frequently Asked Questions (FAQ)</h2>
+
+  <h3>Are my uploaded photos or documents stored on your server?</h3>
+  <p>No. TalkRush does not upload, copy, or transmit your media to any cloud storage or web server. The entire decoding, pixel scaling, and compression lifecycle occurs locally inside your client web browser through HTML5 Canvas technology. Once you refresh or exit the tab, all image buffers are immediately cleared from device memory.</p>
+
+  <h3>How does the aspect ratio lock preserve visual appearance?</h3>
+  <p>The aspect ratio lock calculates the proportional ratio between the source image width and height. When activated, typing a new numerical value in the width field triggers a mathematical calculation that automatically updates the height field (and vice versa). This guarantees your subjects, faces, and brand logos remain visually undistorted.</p>
+
+  <h3>What quality setting provides the best compromise between file size and sharpness?</h3>
+  <p>For most commercial websites, blog articles, and email distributions, an 80% quality setting is optimal. At 80%, perceptual compression artifacts remain virtually imperceptible to the human eye, while file weight is reduced by up to 70% compared to original camera outputs.</p>
+
+  <h3>Can I edit or resize transparent PNG files with this tool?</h3>
+  <p>Yes. When editing an image featuring alpha-channel transparency, select PNG or WEBP as your output format. If you export a transparent graphic as JPG, the transparent zones will automatically convert to a solid white background, as the JPG container specification does not support alpha channels.</p>
+
+  <h3>Will using this tool strip hidden EXIF metadata and GPS coordinates?</h3>
+  <p>Yes. When an image is rendered onto an HTML5 Canvas and re-exported via browser data streams, metadata blocks such as camera serial numbers, focal lengths, device models, and embedded GPS coordinates are discarded. This provides an additional privacy benefit when sharing images online.</p>
+
+  <h3>Can I use this image resizer without an internet connection?</h3>
+  <p>Yes. Once this page finishes loading in your web browser, all underlying canvas rendering and compression logic runs entirely on your local machine. You can disconnect from your network and continue resizing, flipping, and compressing images completely offline.</p>
 </main>
 
 <script>
