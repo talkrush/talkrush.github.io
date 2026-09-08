@@ -1,0 +1,315 @@
+<div id="menu">
+  <div class="menu-items">
+    <div class="menu-section-title">Navigation</div>
+    <a href="/" onclick="toggleMenu()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg>
+      <span>Home</span>
+    </a>
+    <a href="/blog.html" onclick="toggleMenu()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/><path d="M6 14h6"/></svg>
+      <span>Guides &amp; Blog</span>
+    </a>
+
+    <div class="menu-section-title">Online Tools</div>
+    <a href="/tools/image-resizer.html" onclick="toggleMenu()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+      <span>Image Resizer</span>
+    </a>
+    <a href="/tools/password-generator.html" onclick="toggleMenu()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/></svg>
+      <span>Password Generator</span>
+    </a>
+    <a href="/tools/qr-code-generator.html" onclick="toggleMenu()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="5" height="5" x="3" y="3" rx="1"/><rect width="5" height="5" x="16" y="3" rx="1"/><rect width="5" height="5" x="3" y="16" rx="1"/><path d="M21 16h-3a2 2 0 0 0-2 2v3"/><path d="M21 21v.01"/><path d="M12 7v3a2 2 0 0 1-2 2H7"/><path d="M3 12h.01"/><path d="M12 3h.01"/><path d="M12 16v.01"/><path d="M16 12h1"/><path d="M21 12v.01"/><path d="M12 21v-1"/></svg>
+      <span>QR Code Generator</span>
+    </a>
+    <a href="/tools/text-counter.html" onclick="toggleMenu()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="M6 8h.01"/><path d="M10 8h.01"/><path d="M14 8h.01"/><path d="M18 8h.01"/><path d="M6 12h.01"/><path d="M18 12h.01"/><path d="M10 12h4"/></svg>
+      <span>Text Counter</span>
+    </a>
+
+    <div class="menu-section-title">Information</div>
+    <a href="/about.html" onclick="toggleMenu()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+      <span>About Us</span>
+    </a>
+    <a href="/privacy-policy.html" onclick="toggleMenu()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <span>Privacy Policy</span>
+    </a>
+    <a href="/terms.html" onclick="toggleMenu()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      <span>Terms of Service</span>
+    </a>
+    <a href="/contact.html" onclick="toggleMenu()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      <span>Contact Us</span>
+    </a>
+  </div>
+
+  <div class="menu-footer">
+    <button id="shareButton" class="share-btn">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+      <span>Share TalkRush Tools</span>
+    </button>
+  </div>
+</div>
+
+<style>
+#menu {
+  width: 270px;
+  height: 100%;
+  background: #111114;
+  position: fixed;
+  top: 0;
+  left: -270px;
+  transition: left 0.3s cubic-bezier(.4,0,.2,1);
+  overflow: hidden;
+  padding: 60px 0 20px 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  border-right: 0.5px solid rgba(255,255,255,0.08);
+}
+
+.light-mode #menu {
+  background: #ffffff;
+  border-right: 0.5px solid rgba(0,0,0,0.1);
+}
+
+.menu-items {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.menu-items::-webkit-scrollbar { 
+  width: 3px; 
+}
+
+.menu-items::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.08);
+  border-radius: 3px;
+}
+
+.light-mode .menu-items::-webkit-scrollbar-thumb { 
+  background: rgba(0,0,0,0.1); 
+}
+
+.menu-section-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  color: rgba(255,255,255,0.3);
+  padding: 14px 12px 6px;
+}
+
+.light-mode .menu-section-title {
+  color: rgba(0,0,0,0.4);
+}
+
+.menu-items a {
+  text-decoration: none;
+  color: rgba(255,255,255,0.7);
+  font-size: 13px;
+  padding: 10px 12px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: background 0.15s, color 0.15s;
+  border: 0.5px solid transparent;
+}
+
+.menu-items a svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: rgba(255,255,255,0.35);
+  transition: color 0.15s;
+}
+
+.menu-items a:hover {
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  border-color: rgba(255,255,255,0.06);
+}
+
+.menu-items a:hover svg { 
+  color: #ff6b4a; 
+}
+
+.menu-items a.active {
+  background: rgba(255,107,74,0.12);
+  color: #ff6b4a;
+  border-color: rgba(255,107,74,0.2);
+  font-weight: 500;
+}
+
+.menu-items a.active svg { 
+  color: #ff6b4a; 
+}
+
+.light-mode .menu-items a { 
+  color: rgba(0,0,0,0.65); 
+}
+
+.light-mode .menu-items a svg { 
+  color: rgba(0,0,0,0.35); 
+}
+
+.light-mode .menu-items a:hover {
+  background: rgba(0,0,0,0.05);
+  color: #111;
+  border-color: rgba(0,0,0,0.07);
+}
+
+.light-mode .menu-items a:hover svg { 
+  color: #ff6b4a; 
+}
+
+.light-mode .menu-items a.active {
+  background: rgba(255,107,74,0.1);
+  color: #ff6b4a;
+  border-color: rgba(255,107,74,0.18);
+}
+
+.menu-footer {
+  padding: 10px 10px 14px;
+  flex-shrink: 0;
+  border-top: 0.5px solid rgba(255,255,255,0.06);
+}
+
+.light-mode .menu-footer { 
+  border-top-color: rgba(0,0,0,0.07); 
+}
+
+.share-btn {
+  width: 100%;
+  background: #ff6b4a;
+  color: #fff;
+  border: none;
+  padding: 11px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.share-btn svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+.share-btn:hover { 
+  background: #ff5535; 
+}
+
+.share-btn:active { 
+  transform: scale(0.98); 
+}
+
+.menu-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.55);
+  z-index: 998;
+  display: none;
+  backdrop-filter: blur(2px);
+}
+
+.light-mode .menu-overlay { 
+  background: rgba(0,0,0,0.3); 
+}
+
+.menu-btn {
+  background: none;
+  border: none;
+  color: #ccc;
+  font-size: 1.1em;
+  cursor: pointer;
+  width: 32px; height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+  outline: none;
+}
+
+.menu-btn:hover { 
+  background: rgba(255,255,255,0.1); 
+}
+
+.light-mode .menu-btn { 
+  color: #666; 
+}
+
+.light-mode .menu-btn:hover { 
+  background: rgba(0,0,0,0.05); 
+}
+</style>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById("menu");
+  const overlay = document.querySelector('.menu-overlay');
+  const menuBtns = document.querySelectorAll('.menu-btn');
+  const isOpen = menu.style.left === "0px";
+
+  menu.style.left = isOpen ? "-270px" : "0px";
+  if (overlay) overlay.style.display = isOpen ? "none" : "block";
+  menuBtns.forEach(btn => {
+    btn.innerHTML = isOpen ? "&#9776;" : "&#10006;";
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  if (!document.querySelector('.menu-overlay')) {
+    const overlay = document.createElement('div');
+    overlay.className = 'menu-overlay';
+    overlay.onclick = toggleMenu;
+    document.body.appendChild(overlay);
+  }
+
+  const currentPath = window.location.pathname;
+  document.querySelectorAll('.menu-items a').forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+      link.classList.add('active');
+    }
+  });
+
+  const shareButton = document.getElementById("shareButton");
+  if (shareButton) {
+    shareButton.addEventListener("click", () => {
+      const shareUrl = window.location.origin;
+      const shareText = "Free, secure, and client-side online web tools: " + shareUrl;
+
+      if (navigator.share) {
+        navigator.share({
+          title: "TalkRush Tools",
+          text: shareText,
+          url: shareUrl
+        }).catch(() => {});
+        toggleMenu();
+      } else if (navigator.clipboard) {
+        navigator.clipboard.writeText(shareText).then(() => {
+          alert("Link copied to clipboard!");
+        });
+        toggleMenu();
+      }
+    });
+  }
+});
+</script>
