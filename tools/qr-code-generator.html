@@ -82,6 +82,7 @@ icon: "fas fa-qrcode"
     max-width: 650px;
     margin: 90px auto 40px;
     padding: 0 20px;
+    width: 100%;
   }
   
   .tool-title { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px; color: var(--dark-text); margin-bottom: 5px; }
@@ -97,6 +98,7 @@ icon: "fas fa-qrcode"
     border-radius: 16px;
     padding: 25px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 100%;
   }
   .light-mode .generator-box {
     background: var(--light-surface);
@@ -121,7 +123,6 @@ icon: "fas fa-qrcode"
     border-radius: 10px;
     font-size: 16px;
     line-height: 1.5;
-    box-sizing: border-box;
     transition: border-color 0.3s, background 0.3s;
     outline: none;
     resize: vertical;
@@ -155,10 +156,10 @@ icon: "fas fa-qrcode"
 
   .qr-display-area {
     margin-top: 30px;
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
-    display: none;
+    width: 100%;
   }
   .qr-display-area.active { display: flex; }
 
@@ -168,6 +169,15 @@ icon: "fas fa-qrcode"
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     margin-bottom: 20px;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #qrcode canvas, #qrcode img {
+    max-width: 100%;
+    height: auto;
   }
   
   .download-btn {
@@ -196,6 +206,7 @@ icon: "fas fa-qrcode"
     color: var(--dark-text-muted);
     line-height: 1.8;
     font-size: 1.05rem;
+    width: 100%;
   }
   .light-mode .info-section { color: var(--light-text-muted); }
   .info-section h2 { color: var(--dark-text); font-size: 1.8rem; margin: 50px 0 20px; font-weight: 800; letter-spacing: -0.5px; }
@@ -247,26 +258,57 @@ icon: "fas fa-qrcode"
 </div>
 
 <main class="info-section">
-  
   <h2>Bridge the Physical and Digital Worlds</h2>
-  <p>QR codes have become an essential tool for connecting real-world interactions with digital experiences. Whether you are a business owner looking to share a digital menu, a marketer designing promotional flyers, or just someone wanting to easily share your Wi-Fi password with guests, our Free QR Code Generator makes the process completely effortless.</p>
+  <p>Quick Response (QR) codes have revolutionized how individuals and enterprises distribute information across modern touchpoints. Originally invented for industrial inventory tracking, these two-dimensional matrix barcodes have evolved into an indispensable component of mobile commerce, digital marketing, hospitality operations, and interpersonal communication. The TalkRush Free QR Code Generator enables anyone to convert plain text strings, secure payment pointers, Wi-Fi credentials, and website hyperlinks into high-density, error-tolerant visual codes in a matter of seconds.</p>
   
-  <p>Our tool is designed for speed and simplicity. You don't need to sign up for an account, pay any subscription fees, or deal with expiring links. The codes you generate here are static and permanent—they will never stop working as long as the destination URL or text remains active.</p>
+  <p>Unlike commercial subscription services that lock your generated codes behind dynamic paywalls, redirect through intermediary ad servers, or disable codes after arbitrary trial periods, our generator produces static, permanent visual barcodes. Because the graphical encoding routine executes directly on your client hardware via JavaScript and HTML5 canvas rendering, your entered payloads are never relayed to remote web servers, maintaining absolute data privacy and guaranteed zero downtime.</p>
 
-  <h3>Popular Ways to Use QR Codes</h3>
+  <h3>How to Generate and Export QR Codes</h3>
   <ul>
-    <li><strong>Website Links & Social Media:</strong> Instead of asking people to type out long URLs, print a QR code on your business cards, flyers, or storefront windows to direct customers straight to your website, Instagram, or YouTube channel.</li>
-    <li><strong>Digital Menus & Portfolios:</strong> Restaurants and freelancers can link directly to a PDF or mobile-friendly webpage, providing a touchless and instantly updatable experience for their clients.</li>
-    <li><strong>Wi-Fi Access:</strong> Stop spelling out complicated network passwords. Generate a QR code containing your network credentials, allowing guests to connect instantly with a simple scan from their smartphone camera.</li>
-    <li><strong>Contact Information:</strong> Encode your email address, phone number, or a full vCard so network contacts can save your details to their phone instantly without typing a single letter.</li>
+    <li><strong>Provide Your Payload:</strong> Type or paste your desired content into the input field. This can range from an HTTPS website URL to a raw block of plaintext notes, promotional discount codes, or contact identifiers.</li>
+    <li><strong>Render the Code Matrix:</strong> Click the Generate QR Code button or press Enter. The cryptographic rendering algorithm calculates the optimal data grid dimensions and draws your barcode immediately.</li>
+    <li><strong>Preview and Test:</strong> Take out your mobile smartphone camera or QR scanning utility to verify that the generated code reads instantly and directs to the accurate endpoint.</li>
+    <li><strong>Download High-Res Graphic:</strong> Click the Download PNG button to save a pristine, lossless graphic file directly to your local file storage for print or digital distribution.</li>
   </ul>
 
-  <h3>Privacy by Design</h3>
-  <p>We believe your data is your own. Unlike many commercial QR code generators that route your links through tracking servers to harvest user data, our generator runs entirely in your local web browser. The text or URL you enter is converted into a QR code visually on your own device. We do not store your inputs, we do not track the scans, and we do not inject advertisements into your destination links. It is completely safe, private, and secure.</p>
+  <h3>Versatile Applications for Personal and Commercial Use</h3>
+  <ul>
+    <li><strong>Marketing Campaigns and Print Collateral:</strong> Incorporate static barcodes into physical business cards, posters, event banners, and promotional merchandise to guide target audiences directly to landing pages without typing tedious URLs.</li>
+    <li><strong>Touchless Restaurant Menus:</strong> Eliminate physical paper menus by printing table decals that open PDF catalogs or mobile-responsive ordering web applications effortlessly.</li>
+    <li><strong>Seamless Wi-Fi Access:</strong> Encode localized network authentication parameters directly so office guests, cafe patrons, and household visitors can connect without exposing sensitive WPA keys.</li>
+    <li><strong>Contact Information Sharing:</strong> Transform personal portfolios, LinkedIn profiles, or vCard entries into scannable digital assets that network connections can store in their contacts with a single tap.</li>
+    <li><strong>Instructional and Educational Resources:</strong> Educators and event coordinators can embed interactive worksheets, survey forms, and supplementary lecture materials on physical hand-outs.</li>
+  </ul>
 
-  <h3>Tips for Best Results</h3>
-  <p>When generating your code, keep in mind that the more text you enter, the denser and more complex the visual pattern becomes. Highly dense QR codes can be difficult for older smartphone cameras to scan, especially if printed in a small size. For the best scanning reliability, keep your URLs as short as possible. Additionally, always remember to test scan your downloaded QR code with your own phone before adding it to any printed materials.</p>
+  <h3>High Error Correction for Flawless Scannability</h3>
+  <p>Our QR engine employs Level H error correction (Reed-Solomon error correction architecture). This represents the highest industrial redundancy standard possible, allowing the barcode to be read accurately even if up to 30 percent of the visual surface area is smudged, scratched, covered, or torn. Whether your printed materials endure harsh outdoor weather on a bulletin board or slight creases inside a wallet, our codes retain structural scannability across diverse conditions.</p>
 
+  <h3>Best Practices for Printing and Visual Optimization</h3>
+  <ul>
+    <li><strong>Maintain High Contrast:</strong> Modern optical sensors rely on strong luminance differences between data modules and background fields. Always display dark markers on clean, bright backgrounds.</li>
+    <li><strong>Preserve the Quiet Zone Margin:</strong> Ensure you do not crop away the white outer border surrounding the barcode matrix. Scanning engines require this padding zone to distinguish code edges from surrounding artwork.</li>
+    <li><strong>Calculate Proper Print Dimensions:</strong> A standard rule of thumb is a 10:1 distance-to-size ratio. If viewers will scan your code from 1 meter away, make your printed graphic at least 10 centimeters across.</li>
+  </ul>
+
+  <h2>Frequently Asked Questions (FAQ)</h2>
+
+  <h3>Do the QR codes created with this tool ever expire?</h3>
+  <p>No. The QR codes produced by this generator are 100 percent static. The information is hardcoded directly into the geometric pattern itself. As long as your destination link, Wi-Fi password, or embedded text remains valid, the code will continue to function indefinitely without fees or renewals.</p>
+
+  <h3>Is there a limit on how many scans my QR code can receive?</h3>
+  <p>There are zero scan limits. Because these are static matrix graphics, scanning occurs entirely offline between the user's camera lens and their internal software. TalkRush does not monitor, limit, or intercept scan traffic in any way.</p>
+
+  <h3>Are the links or notes I enter saved to your server?</h3>
+  <p>No. Your input is rendered completely inside your web browser's local memory. No databases, logging pipelines, or server-side scripts ever receive your text. Once you refresh or leave the webpage, the input state vanishes from memory.</p>
+
+  <h3>Can I use these QR codes for commercial projects and packaging?</h3>
+  <p>Yes. All codes generated using this tool are completely royalty-free and unrestricted for personal, educational, corporate, and commercial applications, including product packaging, advertising billboards, and business stationery.</p>
+
+  <h3>Why is my smartphone having trouble scanning the downloaded QR code?</h3>
+  <p>Ensure that the code is printed or displayed with adequate physical size and sharp contrast. If you encoded a very long block of text, the matrix modules become denser, requiring cleaner camera lenses, better lighting, or holding the camera slightly further back to allow auto-focus calibration.</p>
+
+  <h3>Can I edit the destination URL after downloading the QR code?</h3>
+  <p>Because static QR codes bake information permanently into the visual pixel pattern, you cannot alter the encoded text once generated. If your target URL changes, simply paste the updated address into this generator to output a brand-new code.</p>
 </main>
 
 <script>
