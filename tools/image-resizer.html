@@ -1,0 +1,456 @@
+---
+layout: default
+title: "Free Image Resizer & Compressor"
+description: "Resize, compress, and flip images online for free. Adjust image quality, dimensions, and format easily right in your browser."
+icon: "fas fa-image"
+---
+
+<style>
+  :root {
+    --dark-bg: #121212;
+    --dark-surface: #111114;
+    --dark-border2: rgba(255,255,255,0.08);
+    --dark-text: #ffffff;
+    --dark-text-muted: rgba(255,255,255,0.75);
+    
+    --light-bg: #f5f5f5;
+    --light-surface: #ffffff;
+    --light-border2: rgba(0,0,0,0.1);
+    --light-text: #111111;
+    --light-text-muted: #444444;
+    
+    --accent: #ff6b4a;
+    --accent-hover: #ff5535;
+    --accent-dim: rgba(255,107,74,0.15);
+
+    --dark-header-bg: #181818;
+    --dark-header-border: #2a2a2a;
+    --dark-icon-color: #ccc;
+    --dark-icon-hover-bg: rgba(255,255,255,0.1);
+    
+    --light-header-bg: #ffffff;
+    --light-header-border: #e0e0e0;
+    --light-icon-color: #666;
+    --light-icon-hover-bg: rgba(0,0,0,0.05);
+
+    --dark-input-bg: rgba(255,255,255,0.03);
+    --light-input-bg: rgba(0,0,0,0.02);
+  }
+
+  body { background: var(--dark-bg); color: var(--dark-text); margin: 0; padding: 0; }
+  body.light-mode { background: var(--light-bg); color: var(--light-text); }
+
+  .app-header {
+    position: fixed !important;
+    top: 0; left: 0;
+    width: 100%;
+    height: 50px;
+    background: var(--dark-header-bg);
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    border-bottom: 1px solid var(--dark-header-border);
+    z-index: 10000;
+  }
+  .light-mode .app-header { 
+    background: var(--light-header-bg); 
+    border-bottom: 1px solid var(--light-header-border); 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
+  }
+
+  .header-left, .header-right { display: flex; align-items: center; gap: 10px; }
+  .logo { height: 34px; width: 34px; border-radius: 8px; }
+  .app-title { font-size: 1.1em; font-weight: 600; color: var(--dark-text); margin: 0; }
+  .light-mode .app-title { color: var(--light-text); }
+
+  .header-toggle {
+    background: none; border: none;
+    color: var(--dark-icon-color);
+    font-size: 1.1em; cursor: pointer;
+    width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%; transition: all 0.3s;
+  }
+  .header-toggle:hover { background: var(--dark-icon-hover-bg); }
+  .light-mode .header-toggle { color: var(--light-icon-color); }
+  .light-mode .header-toggle:hover { background: var(--light-icon-hover-bg); }
+
+  .tool-container {
+    max-width: 1000px;
+    margin: 90px auto 40px;
+    padding: 0 20px;
+  }
+  
+  .tool-title { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px; color: var(--dark-text); margin-bottom: 5px; }
+  .light-mode .tool-title { color: var(--light-text); }
+  .tool-title span { color: var(--accent); }
+  
+  .tool-subtitle { font-size: 1.1rem; color: var(--dark-text-muted); margin-bottom: 30px; }
+  .light-mode .tool-subtitle { color: var(--light-text-muted); }
+
+  .upload-area {
+    border: 2px dashed var(--accent);
+    background: var(--accent-dim);
+    border-radius: 12px;
+    padding: 40px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 25px;
+  }
+  .upload-area:hover { background: rgba(255,107,74,0.25); }
+  .upload-icon { font-size: 3rem; color: var(--accent); margin-bottom: 15px; }
+  .upload-text { font-size: 1.1rem; font-weight: 600; color: var(--dark-text); }
+  .light-mode .upload-text { color: var(--light-text); }
+  #fileInput { display: none; }
+
+  .editor-grid {
+    display: none;
+    grid-template-columns: 1fr 350px;
+    gap: 25px;
+    align-items: start;
+  }
+  @media (max-width: 768px) {
+    .editor-grid { grid-template-columns: 1fr; }
+  }
+
+  .preview-box {
+    background: var(--dark-surface);
+    border: 1px solid var(--dark-border2);
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    overflow: hidden;
+  }
+  .light-mode .preview-box { background: var(--light-surface); border-color: var(--light-border2); }
+  
+  canvas {
+    max-width: 100%;
+    max-height: 60vh;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  }
+
+  .controls-box {
+    background: var(--dark-surface);
+    border: 1px solid var(--dark-border2);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .light-mode .controls-box { background: var(--light-surface); border-color: var(--light-border2); }
+
+  .control-group { margin-bottom: 20px; }
+  .control-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.95rem; }
+  
+  .input-row { display: flex; gap: 10px; align-items: center; }
+  .input-row input[type="number"] {
+    flex: 1;
+    padding: 10px;
+    background: var(--dark-input-bg);
+    color: var(--dark-text);
+    border: 1px solid var(--dark-border2);
+    border-radius: 8px;
+    outline: none;
+  }
+  .light-mode .input-row input[type="number"] { background: var(--light-input-bg); color: var(--light-text); border-color: var(--light-border2); }
+  
+  .checkbox-label { display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.9rem; margin-top: 8px; color: var(--dark-text-muted); }
+  .light-mode .checkbox-label { color: var(--light-text-muted); }
+
+  .btn-group { display: flex; gap: 10px; }
+  .action-btn {
+    flex: 1;
+    padding: 10px;
+    background: var(--dark-input-bg);
+    color: var(--dark-text);
+    border: 1px solid var(--dark-border2);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+  }
+  .light-mode .action-btn { background: var(--light-input-bg); color: var(--light-text); border-color: var(--light-border2); }
+  .action-btn:hover, .action-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+
+  input[type="range"] { width: 100%; accent-color: var(--accent); cursor: pointer; }
+  .quality-val { float: right; color: var(--accent); font-weight: bold; }
+
+  select {
+    width: 100%;
+    padding: 10px;
+    background: var(--dark-input-bg);
+    color: var(--dark-text);
+    border: 1px solid var(--dark-border2);
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+  }
+  .light-mode select { background: var(--light-input-bg); color: var(--light-text); border-color: var(--light-border2); }
+
+  .download-btn {
+    width: 100%;
+    padding: 15px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.2s;
+  }
+  .download-btn:hover { background: var(--accent-hover); }
+
+  .info-section { max-width: 1000px; margin: 0 auto 80px; padding: 0 20px; color: var(--dark-text-muted); line-height: 1.8; font-size: 1.05rem; }
+  .light-mode .info-section { color: var(--light-text-muted); }
+  .info-section h2 { color: var(--dark-text); font-size: 1.8rem; margin: 50px 0 20px; font-weight: 800; letter-spacing: -0.5px; }
+  .light-mode .info-section h2 { color: var(--light-text); }
+  .info-section h3 { color: var(--dark-text); font-size: 1.3rem; margin: 35px 0 12px; font-weight: 700; }
+  .light-mode .info-section h3 { color: var(--light-text); }
+  .info-section p { margin-bottom: 20px; }
+  .info-section ul { margin-bottom: 25px; padding-left: 10px; list-style: none; }
+  .info-section li { margin-bottom: 12px; position: relative; padding-left: 25px; }
+  .info-section li::before { content: "•"; color: var(--accent); font-size: 1.8rem; position: absolute; left: 0; top: -5px; }
+  .info-section strong { color: var(--dark-text); font-weight: 600; }
+  .light-mode .info-section strong { color: var(--light-text); }
+</style>
+
+<header class="app-header">
+  <div class="header-left">
+    <button class="menu-btn header-toggle" onclick="toggleMenu()" title="Open Menu">&#9776;</button>
+    <img src="/logo.png" alt="TalkRush Logo" class="logo" onerror="this.style.display='none'">
+    <h1 class="app-title">TalkRush</h1>
+  </div>
+  <div class="header-right">
+    <button class="header-toggle" id="themeToggle" title="Toggle Dark/Light Mode">
+      <i class="fas fa-moon"></i>
+    </button>
+  </div>
+</header>
+
+<div class="tool-container">
+  <h1 class="tool-title">Image <span>Resizer</span></h1>
+  <p class="tool-subtitle">Resize, compress, and edit your photos instantly without losing privacy.</p>
+
+  <div class="upload-area" id="uploadArea">
+    <i class="fas fa-cloud-upload-alt upload-icon"></i>
+    <div class="upload-text">Click or Drag & Drop Image Here</div>
+    <input type="file" id="fileInput" accept="image/*">
+  </div>
+
+  <div class="editor-grid" id="editorGrid">
+    <div class="preview-box">
+      <canvas id="canvas"></canvas>
+    </div>
+
+    <div class="controls-box">
+      <div class="control-group">
+        <label>Dimensions (Pixels)</label>
+        <div class="input-row">
+          <input type="number" id="imgWidth" placeholder="Width">
+          <span style="font-weight:bold;">×</span>
+          <input type="number" id="imgHeight" placeholder="Height">
+        </div>
+        <label class="checkbox-label">
+          <input type="checkbox" id="aspectRatioLock" checked> Lock Aspect Ratio
+        </label>
+      </div>
+
+      <div class="control-group">
+        <label>Flip Image</label>
+        <div class="btn-group">
+          <button class="action-btn" id="flipHBtn"><i class="fas fa-arrows-alt-h"></i> Horizontal</button>
+          <button class="action-btn" id="flipVBtn"><i class="fas fa-arrows-alt-v"></i> Vertical</button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label>Quality <span class="quality-val" id="qualityVal">80%</span></label>
+        <input type="range" id="qualitySlider" min="1" max="100" value="80">
+      </div>
+
+      <div class="control-group">
+        <label>Output Format</label>
+        <select id="formatSelect">
+          <option value="image/jpeg">JPG (Best for photos)</option>
+          <option value="image/webp">WEBP (Best compression)</option>
+          <option value="image/png">PNG (Lossless/Transparent)</option>
+        </select>
+      </div>
+
+      <button class="download-btn" id="downloadBtn"><i class="fas fa-download"></i> Download Image</button>
+      <button class="action-btn" id="resetBtn" style="width: 100%; margin-top: 10px;">Upload New Image</button>
+    </div>
+  </div>
+</div>
+
+<main class="info-section">
+  <h2>Optimize Your Images Online</h2>
+  <p>High-resolution images look great, but they can slow down your website, consume excessive storage space, and fail to upload on platforms with strict file size limits. Our Free Image Resizer and Compressor is built to solve these problems by giving you full control over your image dimensions, quality, and formatting.</p>
+  
+  <p>The best part? <strong>Your images never leave your device.</strong> Utilizing modern HTML5 Canvas technology, all image resizing, flipping, and compression happens securely within your local web browser. We do not upload your personal photos to any external servers, ensuring 100% privacy and security.</p>
+
+  <h3>Features of the Image Editor</h3>
+  <ul>
+    <li><strong>Pixel-Perfect Resizing:</strong> Precisely adjust the width and height of your images. Keep the "Lock Aspect Ratio" box checked to ensure your photos don't look stretched or distorted.</li>
+    <li><strong>Quality Compression:</strong> Use the intuitive quality slider to drastically reduce file sizes for JPG and WEBP formats, making your images perfectly optimized for web performance and faster loading speeds.</li>
+    <li><strong>Image Flipping:</strong> Easily correct mirrored selfies or change the compositional direction of a photo by flipping it horizontally or vertically with a single click.</li>
+    <li><strong>Format Conversion:</strong> Seamlessly convert your images into highly optimized formats like WEBP for web use, JPG for standard photography, or PNG to maintain lossless quality.</li>
+  </ul>
+
+  <h3>Why Image Optimization Matters for SEO</h3>
+  <p>Search engines like Google use page loading speed as a critical ranking factor. Large, unoptimized images are the leading cause of slow websites. By compressing your images and converting them to next-gen formats like WEBP, you significantly improve your website's performance, leading to better search rankings and improved user experience.</p>
+</main>
+
+<script>
+  const uploadArea = document.getElementById('uploadArea');
+  const fileInput = document.getElementById('fileInput');
+  const editorGrid = document.getElementById('editorGrid');
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
+  
+  const imgWidthInput = document.getElementById('imgWidth');
+  const imgHeightInput = document.getElementById('imgHeight');
+  const aspectRatioLock = document.getElementById('aspectRatioLock');
+  const flipHBtn = document.getElementById('flipHBtn');
+  const flipVBtn = document.getElementById('flipVBtn');
+  const qualitySlider = document.getElementById('qualitySlider');
+  const qualityVal = document.getElementById('qualityVal');
+  const formatSelect = document.getElementById('formatSelect');
+  const downloadBtn = document.getElementById('downloadBtn');
+  const resetBtn = document.getElementById('resetBtn');
+
+  let originalImg = new Image();
+  let currentFileName = "talkrush_image";
+  let ratio = 1;
+  let isFlippedH = false;
+  let isFlippedV = false;
+
+  uploadArea.addEventListener('click', () => fileInput.click());
+
+  uploadArea.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    uploadArea.style.background = 'rgba(255,107,74,0.25)';
+  });
+
+  uploadArea.addEventListener('dragleave', () => {
+    uploadArea.style.background = 'var(--accent-dim)';
+  });
+
+  uploadArea.addEventListener('drop', (e) => {
+    e.preventDefault();
+    uploadArea.style.background = 'var(--accent-dim)';
+    if (e.dataTransfer.files.length) {
+      loadImage(e.dataTransfer.files[0]);
+    }
+  });
+
+  fileInput.addEventListener('change', (e) => {
+    if (e.target.files.length) {
+      loadImage(e.target.files[0]);
+    }
+  });
+
+  function loadImage(file) {
+    if (!file.type.startsWith('image/')) {
+      alert('Please upload a valid image file.');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      originalImg.src = e.target.result;
+      currentFileName = file.name.split('.')[0] + '_resized';
+    };
+    reader.readAsDataURL(file);
+  }
+
+  originalImg.onload = () => {
+    ratio = originalImg.width / originalImg.height;
+    imgWidthInput.value = originalImg.width;
+    imgHeightInput.value = originalImg.height;
+    isFlippedH = false;
+    isFlippedV = false;
+    flipHBtn.classList.remove('active');
+    flipVBtn.classList.remove('active');
+    
+    uploadArea.style.display = 'none';
+    editorGrid.style.display = 'grid';
+    drawCanvas();
+  };
+
+  imgWidthInput.addEventListener('input', () => {
+    if (aspectRatioLock.checked && imgWidthInput.value) {
+      imgHeightInput.value = Math.round(imgWidthInput.value / ratio);
+    }
+    drawCanvas();
+  });
+
+  imgHeightInput.addEventListener('input', () => {
+    if (aspectRatioLock.checked && imgHeightInput.value) {
+      imgWidthInput.value = Math.round(imgHeightInput.value * ratio);
+    }
+    drawCanvas();
+  });
+
+  flipHBtn.addEventListener('click', () => {
+    isFlippedH = !isFlippedH;
+    flipHBtn.classList.toggle('active', isFlippedH);
+    drawCanvas();
+  });
+
+  flipVBtn.addEventListener('click', () => {
+    isFlippedV = !isFlippedV;
+    flipVBtn.classList.toggle('active', isFlippedV);
+    drawCanvas();
+  });
+
+  qualitySlider.addEventListener('input', (e) => {
+    qualityVal.textContent = e.target.value + '%';
+  });
+
+  function drawCanvas() {
+    const w = parseInt(imgWidthInput.value) || originalImg.width;
+    const h = parseInt(imgHeightInput.value) || originalImg.height;
+    
+    canvas.width = w;
+    canvas.height = h;
+
+    ctx.clearRect(0, 0, w, h);
+    ctx.save();
+    
+    ctx.translate(isFlippedH ? w : 0, isFlippedV ? h : 0);
+    ctx.scale(isFlippedH ? -1 : 1, isFlippedV ? -1 : 1);
+    
+    ctx.drawImage(originalImg, 0, 0, w, h);
+    ctx.restore();
+  }
+
+  downloadBtn.addEventListener('click', () => {
+    const format = formatSelect.value;
+    const quality = parseInt(qualitySlider.value) / 100;
+    
+    const dataUrl = canvas.toDataURL(format, quality);
+    
+    const ext = format === 'image/jpeg' ? '.jpg' : format === 'image/webp' ? '.webp' : '.png';
+    const link = document.createElement('a');
+    link.href = dataUrl;
+    link.download = currentFileName + ext;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  });
+
+  resetBtn.addEventListener('click', () => {
+    editorGrid.style.display = 'none';
+    uploadArea.style.display = 'block';
+    fileInput.value = '';
+  });
+</script>
