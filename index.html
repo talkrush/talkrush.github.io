@@ -1,911 +1,172 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TalkRush - Talk to Strangers No Login</title>
-    <meta name="description" content="Talk to Strangers and make new friends in free random chat rooms. Enjoy anonymous text & video chat, group chat rooms. Safe Omegle & OmeTV alternative.">
-    <link rel="icon" type="image/png" href="https://shkumaraman.github.io/assets/chat.png">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css">
-    <style>
-    :root {
-      --dark-header-bg: #181818;
-      --dark-header-border: #2a2a2a;
-      --dark-bg: #121212;
-      --light-bg: #f5f5f5;
-      --light-header-border: #e0e0e0;
-      --dark-text: #fff;
-      --dark-icon-color: #ccc;
-      --light-text: #333;
-    }
+---
+layout: default
+title: "TalkRush Tools - Free Online Web Utilities"
+description: "Free web tools to boost your productivity. Use our secure, fast, and privacy-focused online utilities including text counters, converters, and generators directly in your browser."
+---
 
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: var(--light-bg);
-      color: var(--light-text);
-      margin: 0;
-      padding: 0;
-    }
-
-    .app-header {
-      position: fixed !important;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 50px;
-      background: var(--dark-header-bg);
-      padding: 8px 15px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.4);
-      border-bottom: 1px solid var(--dark-header-border);
-      z-index: 10000;
-    }
-        
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo {
-      height: 40px;
-      width: 40px;
-      border-radius: 10px;
-    }
-
-    .app-title {
-      font-size: 1em;
-      color: var(--dark-text);
-      margin: 0;
-    }
-        
-    .menu-btn {
-      background: none;
-      border: none;
-      color: var(--dark-text);
-      font-size: 24px;
-      cursor: pointer;
-      padding: 5px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .profile-container {
-      width: 100%;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      padding: 60px 10px 0 10px; 
-      overflow: hidden;
-    }
-
-    h2 {
-      margin-top: 0;
-      font-size: 1.6rem;
-    }
-
-    h3 {
-      margin-top: 0;
-    }
-
-    p {
-      margin: 10px 0;
-    }
-
-    #menu {
-      width: 300px;
-      height: 100%;
-      background: var(--dark-header-bg);
-      position: fixed;
-      top: 0;
-      left: -300px;
-      transition: left 0.3s ease-in-out;
-      overflow: hidden;
-      padding: 60px 0 20px 0;
-      z-index: 1000;
-      display: flex;
-      flex-direction: column;
-      border-right: 1px solid var(--dark-header-border);
-    }
-
-    .menu-items {
-      flex: 1;
-      overflow-y: auto;
-      padding: 0 20px;
-      margin-bottom: 20px;
-    }
-
-    .menu-items a {
-      text-decoration: none;
-      color: var(--dark-text);
-      font-size: 16px;
-      margin: 2px 0;
-      padding: 12px 15px;
-      transition: background-color 0.3s;
-      border-radius: 5px;
-      display: block;
-    }
-
-    .menu-items a:hover {
-      background-color: #333;
-    }
-
-    #shareButton {
-      width: 95%;
-      background-color: var(--dark-text);
-      color: var(--light-text);
-      border: none;
-      padding: 15px 25px;
-      margin: 10px auto 5px auto;
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      transition: background-color 0.3s;
-      flex-shrink: 0;
-    }
-
-    .menu-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 998;
-      display: none;
-    }
-
-    .app-card {
-      padding: 10px;
-      margin: 10px 0;
-      width: 100%;
-      border: 2px solid var(--dark-text);
-      border-radius: 10px;
-      background-color: #1e1e1e;
-    }
-
-    .app-card h3 {
-      color: var(--dark-text);
-    }
-
-    .app-card p {
-      color: var(--dark-text);
-    }
-
-    .app-button {
-      display: block;
-      background-color: var(--dark-text);
-      color: var(--light-text);
-      text-align: center;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .connection-options {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin: 15px 0;
-    }
-
-    .connection-option {
-      background-color: #2a2a2a;
-      padding: 10px;
-      border-radius: 8px;
-    }
-
-    .connection-option h4 {
-      color: var(--dark-text);
-      margin: 0 0 8px 0;
-    }
-
-    .connection-option p {
-      color: var(--dark-text);
-      margin: 0;
-      font-size: 14px;
-    }
-
-    .features-slider-container {
-      position: relative;
-      width: 100%;
-      margin: 20px 0;
-      overflow: hidden;
-    }
-
-    .features-slider {
-      display: flex;
-      transition: transform 0.5s ease;
-      width: 100%;
-    }
-
-    .feature-item {
-      flex: 0 0 92%;
-      margin: 0 4%;
-      background-color: #2a2a2a;
-      padding: 25px 20px;
-      border-radius: 15px;
-      box-sizing: border-box;
-      min-height: 220px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .feature-item h4 {
-      color: var(--dark-text);
-      margin: 0 0 15px 0;
-      font-size: 1.3rem;
-    }
-
-    .feature-item p {
-      color: var(--dark-text);
-      margin: 0;
-      font-size: 15px;
-      line-height: 1.5;
-    }
-
-    .slider-dots {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin: 20px 0 10px;
-      padding: 10px 0;
-    }
-
-    .dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background-color: #ccc;
-      cursor: pointer;
-      transition: all 0.3s;
-      border: none;
-      padding: 0;
-    }
-
-    .dot.active {
-      background-color: #4CAF50;
-      transform: scale(1.3);
-      width: 14px;
-      height: 14px;
-    }
-
-    .features-slider-container:hover .features-slider {
-      animation-play-state: paused;
-    }
-
-    .chat-options {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin: 20px 0;
-    }
-
-    .chat-button {
-      display: block;
-      background-color: var(--dark-text);
-      color: var(--light-text);
-      text-align: center;
-      padding: 12px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .chat-type-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 15px;
-      margin: 20px 0;
-    }
-
-    .chat-type-box {
-      background-color: #1f7a3a;
-      border: none;
-      border-radius: 20px;
-      padding: 15px;
-      text-align: center;
-      height: 100px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      transition: transform 0.2s ease, background-color 0.2s ease;
-    }
-
-    .chat-type-box:hover {
-      transform: translateY(-3px);
-      background-color: #2e9b55;
-    }
-
-    .chat-type-box .chat-type-link {
-      color: #ffffff;
-    }
-
-    .chat-type-box .chat-icon {
-      color: #ffffff;
-    }
+<style>
+  :root {
+    --dark-bg: #121212;
+    --dark-surface: #111114;
+    --dark-border2: rgba(255,255,255,0.08);
+    --dark-text: #fff;
+    --dark-text-muted: rgba(255,255,255,0.5);
     
-    .chat-type-box2 {
-      background-color: var(--dark-text);
-      border: 1px solid #ccc;
-      border-radius: 20px;
-      padding: 15px;
-      text-align: center;
-      height: 100px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.2s, background-color 0.2s;
-    }
-
-    .chat-type-box2:hover {
-      transform: translateY(-3px);
-      background-color: #f0f0f0;
-    }
+    --light-bg: #f5f5f5;
+    --light-surface: #ffffff;
+    --light-border2: rgba(0,0,0,0.1);
+    --light-text: #333;
+    --light-text-muted: rgba(0,0,0,0.5);
     
-    .chat-type-link {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: var(--light-text);
-      text-decoration: none;
-      font-weight: bold;
-      width: 100%;
-      height: 100%;
-    }
+    --accent: #ff6b4a;
+    --accent-dim: rgba(255,107,74,0.15);
+  }
 
-    .chat-icon {
-      width: 32px;
-      height: 32px;
-      margin-bottom: 8px;
-      color: #4CAF50;
-    }
+  .hero-section {
+    text-align: center;
+    padding: 80px 20px 50px;
+    background: radial-gradient(circle at top, var(--dark-surface), var(--dark-bg));
+    border-bottom: 1px solid var(--dark-border2);
+  }
+  .light-mode .hero-section {
+    background: radial-gradient(circle at top, #ffffff, var(--light-bg));
+    border-bottom-color: var(--light-border2);
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--dark-text);
+    margin: 0 0 15px 0;
+    letter-spacing: -0.5px;
+  }
+  .hero-title span {
+    color: var(--accent);
+  }
+  .light-mode .hero-title { color: var(--light-text); }
+  
+  .hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--dark-text-muted);
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  .light-mode .hero-subtitle { color: var(--light-text-muted); }
 
-    .chat-rooms-section {
-      background: #1e1e1e;
-      padding: 20px;
-      margin: 20px 0;
-      border-radius: 10px;
-    }
+  .tools-container {
+    max-width: 1100px;
+    margin: 50px auto 80px;
+    padding: 0 15px;
+  }
 
-    .chat-rooms-section h2 {
-      color: var(--dark-text);
-      text-align: center;
-    }
+  .tools-grid {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-    .chat-rooms-section p {
-      color: var(--dark-text);
+  @media (min-width: 650px) {
+    .tools-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
     }
+  }
 
-    .chat-rooms-section h3 {
-      color: var(--dark-text);
+  @media (min-width: 992px) {
+    .tools-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
     }
+  }
 
-    .chat-rooms-features {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 15px;
-      margin: 20px 0;
-    }
-
-    .chat-rooms-feature {
-      background-color: #2a2a2a;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    .chat-rooms-feature h3 {
-      color: var(--dark-text);
-    }
-
-    .chat-rooms-feature p {
-      color: var(--dark-text);
-    }
-
-    .chat-rooms-button {
-      display: block;
-      background-color: var(--dark-text);
-      color: var(--light-text);
-      text-align: center;
-      padding: 12px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      margin: 15px auto;
-      max-width: 250px;
-      transition: background 0.2s;
-    }
-
-    .chat-rooms-button:hover {
-      background: #ddd;
-    }
-
- .slider {
+  .tool-card {
+    background: var(--dark-surface);
+    border: 1px solid var(--dark-border2);
+    border-radius: 16px;
+    padding: 20px 15px;
+    text-decoration: none;
     display: flex;
-    gap: 20px;
-    animation: slide 12s linear infinite;
-}
-
-.card {
-    flex: 0 0 200px;
-    height: 300px;
-    border-radius: 12px;
-    transform: rotate(-5deg);
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
     overflow: hidden;
-}
+  }
+  .light-mode .tool-card {
+    background: var(--light-surface);
+    border-color: var(--light-border2);
+  }
 
-.card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
+  .tool-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+  }
+  .light-mode .tool-card:hover {
+    box-shadow: 0 12px 24px rgba(255,107,74,0.15);
+  }
 
-@keyframes slide {
-    0% {
-        transform: translateX(0);
-    }
+  .tool-icon-wrapper {
+    width: 54px;
+    height: 54px;
+    background: var(--accent-dim);
+    color: var(--accent);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+    transition: all 0.3s ease;
+  }
+  .tool-card:hover .tool-icon-wrapper {
+    background: var(--accent);
+    color: #fff;
+    transform: scale(1.1) rotate(5deg);
+  }
 
-    100% {
-        transform: translateX(calc(-220px * 5));
-    }
-        }
-        
-    @media (min-width: 600px) {
-      .connection-options {
-        flex-direction: row;
-        flex-wrap: wrap;
-      }
-      
-      .connection-option {
-        flex: 1 1 calc(50% - 10px);
-      }
+  .tool-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--dark-text);
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+  }
+  .light-mode .tool-name { color: var(--light-text); }
 
-      .chat-options {
-        flex-direction: row;
-        justify-content: center;
-      }
+  .tool-desc {
+    font-size: 0.8rem;
+    color: var(--dark-text-muted);
+    line-height: 1.5;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .light-mode .tool-desc { color: var(--light-text-muted); }
 
-      .chat-button {
-        width: 30%;
-      }
+</style>
 
-      .chat-rooms-features {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      h2 {
-        font-size: 1.8rem;
-      }
-
-      .chat-type-grid {
-        grid-template-columns: 1fr 1fr;
-        max-width: 500px;
-        margin: 20px auto;
-      }
-
-      .feature-item {
-        flex: 0 0 46%;
-        margin: 0 2%;
-        padding: 30px 25px;
-        min-height: 250px;
-      }
-    }
-    </style>
-    
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "TalkRush",
-      "url": "https://talkrush.github.io",
-      "description": "Meet new people instantly on ConnectChat. Join group discussions, have private conversations, or start live video calls — all without signup.",
-      "applicationCategory": "CommunicationApplication",
-      "operatingSystem": "Web Browser",
-      "creator": {
-        "@type": "Person",
-        "name": "TalkRush Team"
-      },
-      "screenshot": "https://shkumaraman.github.io/assets/chat.png"
-    }
-    </script>
-</head>
-<body>
-    <header class="app-header">
-      <div class="header-left">
-        <button class="menu-btn" onclick="toggleMenu()">&#9776;</button>
-        <img src="https://shkumaraman.github.io/chat/logo.png" alt="TalkRush Logo" class="logo">
-        <h1 class="app-title">TalkRush</h1>         
-      </div>
-    </header>
-
-    <div id="menu">
-      <div class="menu-items">
-        <a href="https://shkumaraman.github.io/" onclick="toggleMenu()">Home</a>
-        <a href="https://shkumaraman.github.io/chat/rooms.html" onclick="toggleMenu()">Chat Rooms</a>
-        <a href="https://shkumaraman.github.io/chat/inbox.html" onclick="toggleMenu()">Inbox</a>
-        <a href="https://shkumaraman.github.io/chat/" onclick="toggleMenu()">Strangers Chat</a>
-        <a href="https://shkumaraman.github.io/chat/video.html" onclick="toggleMenu()">Webcam Roulette</a>
-        <a href="https://shkumaraman.github.io/chat/private-room.html" onclick="toggleMenu()">Private Room (Invite)</a>
-        <a href="https://shkumaraman.github.io/post.html" onclick="toggleMenu()">Anonymous Posts</a>
-        <a href="https://shkumaraman.github.io/photoshare.html" onclick="toggleMenu()">PhotoShare</a>
-      </div>
-
-      <!-- Share Button -->
-      <button id="shareButton" class="share-btn">
-        <i class="fa-solid fa-arrow-up-from-bracket"></i>
-        <span>Share</span>
-      </button>
-    </div>
-
-    <div class="profile-container">
-      <h2>TalkRush - Chat with Strangers</h2>
-      <p>Meet new people, make friends, and start exciting conversations with strangers worldwide. No registration required - start chatting instantly!</p>
-        
-      <!-- Chat Options -->
-      <div class="preferences-container">
-        <h3>Choose Your Chat Type</h3>
-      
-        <div class="chat-type-grid">
-          <div class="chat-type-box">
-            <a href="https://shkumaraman.github.io/chat/" class="chat-type-link">
-              <svg class="chat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 14H6l-2 2V4h16v12z"/>
-                <path d="M7 9h10v2H7zm0 4h7v2H7z"/>
-              </svg>
-              Strangers Chat
-            </a>
-          </div>
-          <div class="chat-type-box2">
-            <a href="https://shkumaraman.github.io/chat/video.html" class="chat-type-link">
-              <svg class="chat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/>
-              </svg>
-              Webcam Roulette
-            </a>
-          </div>
-        </div>
-      </div>
-
-    <div class="slider">
-    <div class="card">
-        <img src="https://shkumaraman.github.io/assets/girl1.jpeg" alt="girl-dp">
-    </div>
-
-    <div class="card">
-        <img src="https://shkumaraman.github.io/assets/girl2.jpeg" alt="girl-dp">
-    </div>
-
-    <div class="card">
-        <img src="https://shkumaraman.github.io/assets/girl3.jpeg" alt="girl-dp">
-    </div>
-
-    <div class="card">
-        <img src="https://shkumaraman.github.io/assets/girl4.jpeg" alt="girl-dp">
-    </div>
-
-    <div class="card">
-        <img src="https://shkumaraman.github.io/assets/girl5.jpeg" alt="girl-dp">
-    </div>
-
-
-    <div class="card">
-        <img src="https://shkumaraman.github.io/assets/girl1.jpeg" alt="girl-dp">
-    </div>
-
-    <div class="card">
-        <img src="https://shkumaraman.github.io/assets/girl2.jpeg" alt="girl-dp">
-    </div>
-
-    <div class="card">
-        <img src="https://shkumaraman.github.io/assets/girl3.jpeg" alt="girl-dp">
-    </div>
-
-    <div class="card">
-        <img src="https://shkumaraman.github.io/assets/girl4.jpeg" alt="girl-dp">
-    </div>
-
-    <div class="card">
-        <img src="https://shkumaraman.github.io/assets/girl5.jpeg" alt="girl-dp">
-    </div>
+<div class="hero-section">
+  <h1 class="hero-title">TalkRush <span>Tools</span></h1>
+  <p class="hero-subtitle">100% Free, secure, and fast online utilities to supercharge your daily workflow.</p>
 </div>
 
-    <div class="feature-details">
-    <h2>The Best Site to Chat with Male and Female Strangers</h2>
-    <p>Join Our Growing Community</p>
-    <p>People from around the world are connecting every day</p>
-    </div>
-      
-      <!-- Chat Rooms Section -->
-      <div class="chat-rooms-section">
-        <h2>Chat Rooms</h2>
-        <p>Join interest-based chat rooms where anyone can participate. Connect with people who share your hobbies, topics, or interests in lively group conversations.</p>
-        
-        <div class="chat-rooms-features">
-          <div class="chat-rooms-feature">
-            <h3>Interest-Based Rooms</h3>
-            <p>Join rooms based on your interests - gaming, music, movies, sports, and more.</p>
+<div class="tools-container">
+  <div class="tools-grid">
+    {% for tool in site.pages %}
+      {% if tool.url contains '/tools/' and tool.url != '/tools/' and tool.url != '/tools/index.html' %}
+        <a href="{{ tool.url | relative_url }}" class="tool-card">
+          <div class="tool-icon-wrapper">
+            <i class="{{ tool.icon | default: 'fas fa-tools' }}"></i>
           </div>
-          
-          <div class="chat-rooms-feature">
-          <h3>Create Your Own Room</h3>
-          <p>Start a private or public chat room. You can set a password for privacy and control who joins. Invite friends or let strangers join safely.</p>
-          </div>
-        </div>
-        
-        <a href="https://shkumaraman.github.io/chat/rooms.html" class="chat-rooms-button">Join Chat Rooms</a>
-      </div>
-          
-      <!-- ConnectChat Section -->
-      <div class="talkrush-section">
-        <div style="text-align: center; margin-bottom: 15px;">
-          <h2>Connect With New People Instantly</h2>
-          <p>No login required • 100% free • Meet interesting individuals worldwide</p>
-        </div>
-
-        <h3>How would you like to connect?</h3>
-        <p>Choose your preferred way to meet people from around the world</p>
-        
-        <div class="connection-options">
-          <div class="connection-option">
-            <h4>Chat Rooms</h4>
-            <p>Join or Create public conversation rooms and interact with multiple people</p>
-          </div>
-          <div class="connection-option">
-            <h4>Text Conversations</h4>
-            <p>Private 1-on-1 anonymous messaging with new people</p>
-          </div>
-          <div class="connection-option">
-            <h4>Video Calls</h4>
-            <p>Face-to-face random video conversations with people worldwide</p>
-          </div>
-          <div class="connection-option">
-            <h4>Anonymous Posts</h4>
-            <p>Share your thoughts or experiences anonymously with the community — no identity, no pressure.</p>
-          </div>
-        </div>
-        
-        <h3>Why Choose Our Platform?</h3>
-        
-        <div class="features-slider-container">
-          <div class="features-slider" id="featuresSlider">
-            <div class="feature-item">
-              <h4>100% Anonymous & Free</h4>
-              <p>No registration needed. Instantly connect without revealing your identity. Completely free random chat experience.</p>
-            </div>
-            <div class="feature-item">
-              <h4>Global Community</h4>
-              <p>Meet people from all around the world - perfect Omegle and OmeTV alternative for global connections.</p>
-            </div>
-            <div class="feature-item">
-              <h4>Share Media & GIFs</h4>
-              <p>Send images and GIFs in both group and private conversations for more engaging interactions.</p>
-            </div>
-            <div class="feature-item">
-              <h4>Mobile Friendly</h4>
-              <p>Works perfectly on all devices - phones, tablets and computers with responsive design.</p>
-            </div>
-            <div class="feature-item">
-              <h4>Quick Skip Feature</h4>
-              <p>Press Esc to instantly skip and meet someone new — no clicks needed for fast connections.</p>
-            </div>
-            <div class="feature-item">
-              <h4>Interest-Based Matching</h4>
-              <p>Talk to strangers who match your interests, gender preference, or chosen tags for more relevant conversations.</p>
-            </div>
-            <div class="feature-item">
-              <h4>Quality Video Calling</h4>
-              <p>Good quality video with minimal lag and quick connections for seamless video chat experience.</p>
-            </div>
-            <div class="feature-item">
-              <h4>Advanced Safety Features</h4>
-              <p>Content moderation, spam protection, and privacy controls for secure chatting environment.</p>
-            </div>
-          </div>
-          
-          <div class="slider-dots" id="sliderDots"></div>
-        </div>
-
-        <div style="max-width:600px; width:100%; margin:auto;">
-          <img src="https://shkumaraman.github.io/assets/girls_chat_online.png" alt="girls chatrooms" style="width:100%; height:auto;">
-        </div>
-        
-        <h3>Getting Started is Easy</h3>
-        <p>Join our vibrant community in seconds:</p>
-        <p>Whether you're looking for casual talk, cultural exchange, or meaningful conversations, we provide the perfect environment with many daily active users ready to connect.</p>
-      </div>
-
-      <!-- PhotoShare Card with Border -->
-      <div class="app-card">
-        <h3>PhotoShare</h3>
-        <p>Secure photo sharing tool where uploaded images are automatically deleted after 24 hours. Share photos with a unique 5-digit code.</p>
-        <a href="https://shkumaraman.github.io/photoshare.html" class="app-button">Use PhotoShare</a>
-      </div>
-    </div>
-
-    <script>
-    // Menu toggle functionality
-    function toggleMenu() {
-      const menu = document.getElementById("menu");
-      const overlay = document.querySelector('.menu-overlay');
-      const menuBtns = document.querySelectorAll('.menu-btn');
-      
-      if (menu.style.left === "0px") {
-        menu.style.left = "-300px";
-        if (overlay) overlay.style.display = "none";
-        menuBtns.forEach(btn => btn.innerHTML = "&#9776;");
-      } else {
-        menu.style.left = "0px";
-        if (overlay) overlay.style.display = "block";
-        menuBtns.forEach(btn => btn.innerHTML = "&#10006;");
-      }
-    }
-
-    // Features slider functionality
-    (function() {
-      const slider = document.getElementById('featuresSlider');
-      if (!slider) return;
-      
-      const dotsContainer = document.getElementById('sliderDots');
-      const items = document.querySelectorAll('.feature-item');
-      const itemCount = items.length;
-      
-      function getItemsPerView() {
-        return window.innerWidth >= 600 ? 2 : 1;
-      }
-      
-      let itemsPerView = getItemsPerView();
-      let currentIndex = 0;
-      let maxIndex = Math.max(0, Math.ceil(itemCount / itemsPerView) - 1);
-      let autoSlideInterval;
-      
-      function createDots() {
-        dotsContainer.innerHTML = '';
-        for (let i = 0; i <= maxIndex; i++) {
-          const dot = document.createElement('button');
-          dot.classList.add('dot');
-          if (i === 0) dot.classList.add('active');
-          dot.setAttribute('data-index', i);
-          dot.addEventListener('click', function() {
-            const index = parseInt(this.getAttribute('data-index'));
-            goToSlide(index);
-            resetAutoSlide();
-          });
-          dotsContainer.appendChild(dot);
-        }
-      }
-      
-      function updateDots() {
-        const dots = document.querySelectorAll('.dot');
-        dots.forEach((dot, i) => {
-          if (i === currentIndex) {
-            dot.classList.add('active');
-          } else {
-            dot.classList.remove('active');
-          }
-        });
-      }
-      
-      function goToSlide(index) {
-        if (index < 0) index = 0;
-        if (index > maxIndex) index = maxIndex;
-        currentIndex = index;
-        const translateX = -currentIndex * 100;
-        slider.style.transform = `translateX(${translateX}%)`;
-        updateDots();
-      }
-      
-      function nextSlide() {
-        if (currentIndex < maxIndex) {
-          goToSlide(currentIndex + 1);
-        } else {
-          goToSlide(0);
-        }
-      }
-      
-      function resetAutoSlide() {
-        if (autoSlideInterval) {
-          clearInterval(autoSlideInterval);
-        }
-        autoSlideInterval = setInterval(nextSlide, 5000);
-      }
-      
-      function handleResize() {
-        const newItemsPerView = getItemsPerView();
-        if (newItemsPerView !== itemsPerView) {
-          itemsPerView = newItemsPerView;
-          maxIndex = Math.max(0, Math.ceil(itemCount / itemsPerView) - 1);
-          if (currentIndex > maxIndex) {
-            currentIndex = maxIndex;
-          }
-          createDots();
-          goToSlide(currentIndex);
-        }
-      }
-      
-      maxIndex = Math.max(0, Math.ceil(itemCount / itemsPerView) - 1);
-      createDots();
-      
-      window.addEventListener('resize', function() {
-        handleResize();
-        resetAutoSlide();
-      });
-      
-      resetAutoSlide();
-      
-      slider.addEventListener('mouseenter', function() {
-        if (autoSlideInterval) {
-          clearInterval(autoSlideInterval);
-        }
-      });
-      
-      slider.addEventListener('mouseleave', function() {
-        resetAutoSlide();
-      });
-    })();
-
-    // DOM Content Loaded
-    document.addEventListener('DOMContentLoaded', function() {
-      if (!document.querySelector('.menu-overlay')) {
-        const overlay = document.createElement('div');
-        overlay.className = 'menu-overlay';
-        overlay.onclick = toggleMenu;
-        document.body.appendChild(overlay);
-      }
-      
-      const shareButton = document.getElementById("shareButton");
-      
-      if (!shareButton) return;
-
-      shareButton.addEventListener("click", async () => {
-        const shareData = {
-          title: "TalkRush - Chat With Strangers!",
-          text: "Connect with strangers, chat and Talk freely, and explore fun conversations. Try TalkRush now:",
-          url: "https://shkumaraman.github.io"
-        };
-
-        if (navigator.share) {
-          try {
-            await navigator.share(shareData);
-          } catch (err) {}
-        } else {
-          const fullText = shareData.text + " " + shareData.url;
-
-          if (navigator.clipboard) {
-            navigator.clipboard.writeText(fullText);
-          } else {
-            const tempInput = document.createElement("input");
-            tempInput.value = fullText;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand("copy");
-            document.body.removeChild(tempInput);
-          }
-        }
-      });
-    });
-    </script>
-</body>
-</html>
+          <h2 class="tool-name">{{ tool.title | split: "-" | first | strip }}</h2>
+          <p class="tool-desc">{{ tool.description }}</p>
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
