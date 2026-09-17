@@ -255,6 +255,72 @@ body.light-mode {
   font-weight: 600;
 }
 .light-mode .info-section strong { color: var(--light-text); }
+
+.faq-accordion {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.faq-item {
+  background: var(--dark-surface);
+  border: 1px solid var(--dark-border2);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.light-mode .faq-item {
+  background: var(--light-surface);
+  border-color: var(--light-border2);
+}
+
+.faq-item[open] {
+  border-color: var(--accent);
+}
+
+.faq-question {
+  list-style: none;
+  cursor: pointer;
+  padding: 18px 20px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--dark-text);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+.light-mode .faq-question { color: var(--light-text); }
+
+.faq-question::-webkit-details-marker {
+  display: none;
+}
+
+.faq-question::after {
+  content: "+";
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--accent);
+  line-height: 1;
+  transition: transform 0.25s ease;
+}
+
+.faq-item[open] .faq-question::after {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  padding: 0 20px 20px 20px;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--dark-text-muted);
+  border-top: 1px solid transparent;
+}
+.light-mode .faq-answer {
+  color: var(--light-text-muted);
+}
 </style>
 
 <header class="app-header">
@@ -307,22 +373,61 @@ body.light-mode {
     <li><strong>And Many More Tools:</strong> From HTML formatters to color converters, our platform is constantly expanding to bring all the digital utilities you need into one centralized hub.</li>
   </ul>
 
-  <h2>Fast, Secure, and Private</h2>
-  <p>Web-based utilities offer a distinct advantage: universal compatibility. Because they run entirely in your browser, you can access them from any operating system—be it Windows, macOS, Linux, or mobile platforms like iOS and Android. You can effortlessly transition from working on a desktop at the office to making quick edits on your smartphone.</p>
+  <h2>Client-Side Processing: Privacy First Architecture</h2>
+  <p>Unlike conventional web services that transmit files across third-party remote servers, TalkRush utilities are built around client-side browser execution. Using modern Web APIs and JavaScript engines, your images, text documents, and personal credentials never leave your local machine.</p>
 
-  <p>Privacy and performance are at the core of our platform. We understand that you may be working with sensitive data. That is why the vast majority of our tools utilize client-side processing. Your inputs, text, and images are handled directly within your own browser and are never uploaded to external servers, ensuring that your data remains entirely in your control while delivering lightning-fast results.</p>
+  <p>This localized execution architecture eliminates transmission delays, conserves mobile network bandwidth, and completely removes the threat of database leaks or unauthorized data retention. Whether you are resizing sensitive identity documents or generating randomized passwords for critical logins, complete privacy remains guaranteed by design.</p>
 
   <h2>Frequently Asked Questions</h2>
   
-  <h3>Are these web tools entirely free?</h3>
-  <p>Yes, all utilities on our platform are completely free to use. There are no paywalls, hidden subscription fees, or restrictive daily usage limits. Our goal is to make digital productivity accessible to everyone.</p>
+  <div class="faq-accordion">
+    <details class="faq-item">
+      <summary class="faq-question">Are all tools on TalkRush completely free?</summary>
+      <div class="faq-answer">
+        Yes. Every utility on this platform is completely unrestricted and free. There are no trial periods, mandatory credit card prompts, hidden tier paywalls, or daily task throttles.
+      </div>
+    </details>
 
-  <h3>Do I need to create an account?</h3>
-  <p>No registration is required. You can instantly open and utilize any tool on the site without signing up, logging in, or providing any personal information.</p>
+    <details class="faq-item">
+      <summary class="faq-question">Do I need to create an account or provide an email?</summary>
+      <div class="faq-answer">
+        No account creation or registration is necessary. You can open any tool and start using it immediately without sharing your personal identity, contact details, or login credentials.
+      </div>
+    </details>
 
-  <h3>Is my data safe when using these utilities?</h3>
-  <p>Absolutely. We prioritize your privacy and security. Our tools process your data locally within your web browser. This means your sensitive information is never uploaded to or stored on our servers.</p>
+    <details class="faq-item">
+      <summary class="faq-question">How does client-side processing ensure absolute security?</summary>
+      <div class="faq-answer">
+        Most web applications upload your files to a cloud backend to manipulate them. TalkRush performs calculations, image rendering, and text operations directly within your web browser's isolated sandbox memory. Your files are never stored on an external server or saved in a remote database.
+      </div>
+    </details>
 
-  <h3>Can I use these tools on my smartphone?</h3>
-  <p>Yes! The typography and layout adapt perfectly to smaller screens, ensuring that every utility remains highly readable and completely functional on mobile phones, tablets, and large desktop monitors alike.</p>
+    <details class="faq-item">
+      <summary class="faq-question">Can I use these utilities on mobile devices and tablets?</summary>
+      <div class="faq-answer">
+        Yes. The entire platform is built with fluid responsive layouts that adjust smoothly across Android, iOS, iPadOS, macOS, Linux, and Windows devices without requiring standalone app installations.
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-question">Is there any file size limitation for images and text?</summary>
+      <div class="faq-answer">
+        Because image resizing and document analyses occur in your local browser memory rather than over a remote server connection, performance depends primarily on your device’s available hardware memory rather than server bandwidth limits.
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-question">Which web browsers offer the best compatibility?</summary>
+      <div class="faq-answer">
+        Our tools adhere to open HTML5, CSS3, and modern ECMAScript standards. They run seamlessly across all modern browsers including Google Chrome, Mozilla Firefox, Apple Safari, Microsoft Edge, Brave, and Opera.
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-question">How often are new tools and features released?</summary>
+      <div class="faq-answer">
+        We actively introduce new tools and maintain existing features based on community needs. If you require a specific workflow utility or wish to suggest improvements, you can reach out directly via our Contact Us page.
+      </div>
+    </details>
+  </div>
 </main>
