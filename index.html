@@ -204,7 +204,7 @@ body.light-mode {
 
 .info-section {
   max-width: 800px;
-  margin: 0 auto 80px;
+  margin: 0 auto 50px;
   padding: 0 20px;
   color: var(--dark-text-muted);
   line-height: 1.8;
@@ -256,6 +256,7 @@ body.light-mode {
 }
 .light-mode .info-section strong { color: var(--light-text); }
 
+/* Accordion FAQ Styles */
 .faq-accordion {
   margin-top: 30px;
   display: flex;
@@ -320,6 +321,119 @@ body.light-mode {
 }
 .light-mode .faq-answer {
   color: var(--light-text-muted);
+}
+
+/* 2x2 Blog Grid Section */
+.blog-section {
+  max-width: 1100px;
+  margin: 0 auto 90px;
+  padding: 0 20px;
+}
+
+.blog-section-header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.blog-section-title {
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: var(--dark-text);
+  margin: 0 0 10px 0;
+}
+.light-mode .blog-section-title { color: var(--light-text); }
+
+.blog-section-subtitle {
+  font-size: 0.95rem;
+  color: var(--dark-text-muted);
+  margin: 0;
+}
+.light-mode .blog-section-subtitle { color: var(--light-text-muted); }
+
+.blog-grid-2x2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 700px) {
+  .blog-grid-2x2 {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+.blog-card {
+  background: var(--dark-surface);
+  border: 1px solid var(--dark-border2);
+  border-radius: 14px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.light-mode .blog-card {
+  background: var(--light-surface);
+  border-color: var(--light-border2);
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+.light-mode .blog-card:hover {
+  box-shadow: 0 10px 25px rgba(255,107,74,0.12);
+}
+
+.blog-badge {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  background: var(--accent-dim);
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+.blog-card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--dark-text);
+  margin: 0 0 10px 0;
+}
+.light-mode .blog-card-title { color: var(--light-text); }
+
+.blog-card-desc {
+  font-size: 0.88rem;
+  color: var(--dark-text-muted);
+  line-height: 1.6;
+  margin: 0 0 20px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.light-mode .blog-card-desc { color: var(--light-text-muted); }
+
+.blog-read-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap 0.2s ease;
+}
+.blog-card:hover .blog-read-link {
+  gap: 10px;
 }
 </style>
 
@@ -431,3 +545,28 @@ body.light-mode {
     </details>
   </div>
 </main>
+
+<!-- Blog / Guides 2x2 Grid Section -->
+<section class="blog-section">
+  <div class="blog-section-header">
+    <h2 class="blog-section-title">Guides &amp; Practical Tutorials</h2>
+    <p class="blog-section-subtitle">In-depth technical guides, digital privacy tips, and step-by-step optimization workflows.</p>
+  </div>
+
+  <div class="blog-grid-2x2">
+    {% for article in site.pages %}
+      {% if article.url contains '/page/' and article.url != '/page/' and article.url != '/page/index.html' %}
+        <a href="{{ article.url | relative_url }}" class="blog-card">
+          <div>
+            <span class="blog-badge">Guide</span>
+            <h3 class="blog-card-title">{{ article.title }}</h3>
+            <p class="blog-card-desc">{{ article.description }}</p>
+          </div>
+          <div class="blog-read-link">
+            Read Full Guide <span>&rarr;</span>
+          </div>
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
