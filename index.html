@@ -256,7 +256,6 @@ body.light-mode {
 }
 .light-mode .info-section strong { color: var(--light-text); }
 
-/* Accordion FAQ Styles */
 .faq-accordion {
   margin-top: 30px;
   display: flex;
@@ -323,7 +322,6 @@ body.light-mode {
   color: var(--light-text-muted);
 }
 
-/* 2x2 Blog Grid Section */
 .blog-section {
   max-width: 1100px;
   margin: 0 auto 90px;
@@ -546,7 +544,6 @@ body.light-mode {
   </div>
 </main>
 
-<!-- Blog / Guides 2x2 Grid Section -->
 <section class="blog-section">
   <div class="blog-section-header">
     <h2 class="blog-section-title">Guides &amp; Practical Tutorials</h2>
@@ -555,7 +552,7 @@ body.light-mode {
 
   <div class="blog-grid-2x2">
     {% for article in site.pages %}
-      {% if article.url contains '/page/' and article.url != '/page/' and article.url != '/page/index.html' %}
+      {% if article.url contains '/blog/' and article.url != '/blog/' and article.url != '/blog/index.html' %}
         <a href="{{ article.url | relative_url }}" class="blog-card">
           <div>
             <span class="blog-badge">Guide</span>
