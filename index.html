@@ -202,32 +202,33 @@ body.light-mode {
 }
 .light-mode .tool-desc { color: var(--light-text-muted); }
 
-.info-section {
+.info-section, .faq-section {
   max-width: 800px;
-  margin: 0 auto 50px;
+  margin: 0 auto 60px;
   padding: 0 20px;
   color: var(--dark-text-muted);
   line-height: 1.8;
   font-size: 1.05rem;
 }
-.light-mode .info-section { color: var(--light-text-muted); }
+.light-mode .info-section, .light-mode .faq-section { color: var(--light-text-muted); }
 
-.info-section h2 {
+.info-section h2, .faq-section h2 {
   color: var(--dark-text);
   font-size: 1.8rem;
-  margin: 60px 0 20px;
+  margin: 50px 0 20px;
   font-weight: 800;
   letter-spacing: -0.5px;
 }
-.light-mode .info-section h2 { color: var(--light-text); }
+.light-mode .info-section h2, .light-mode .faq-section h2 { color: var(--light-text); }
 
-.info-section h3 {
-  color: var(--dark-text);
-  font-size: 1.3rem;
-  margin: 40px 0 12px;
-  font-weight: 700;
+.faq-section {
+  margin-bottom: 90px;
 }
-.light-mode .info-section h3 { color: var(--light-text); }
+
+.faq-section h2 {
+  text-align: center;
+  margin-top: 20px;
+}
 
 .info-section p { margin-bottom: 20px; }
 
@@ -256,75 +257,9 @@ body.light-mode {
 }
 .light-mode .info-section strong { color: var(--light-text); }
 
-.faq-accordion {
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.faq-item {
-  background: var(--dark-surface);
-  border: 1px solid var(--dark-border2);
-  border-radius: 12px;
-  overflow: hidden;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
-}
-.light-mode .faq-item {
-  background: var(--light-surface);
-  border-color: var(--light-border2);
-}
-
-.faq-item[open] {
-  border-color: var(--accent);
-}
-
-.faq-question {
-  list-style: none;
-  cursor: pointer;
-  padding: 18px 20px;
-  font-weight: 700;
-  font-size: 1.05rem;
-  color: var(--dark-text);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  user-select: none;
-  transition: color 0.2s ease;
-}
-.light-mode .faq-question { color: var(--light-text); }
-
-.faq-question::-webkit-details-marker {
-  display: none;
-}
-
-.faq-question::after {
-  content: "+";
-  font-size: 1.4rem;
-  font-weight: 400;
-  color: var(--accent);
-  line-height: 1;
-  transition: transform 0.25s ease;
-}
-
-.faq-item[open] .faq-question::after {
-  transform: rotate(45deg);
-}
-
-.faq-answer {
-  padding: 0 20px 20px 20px;
-  font-size: 0.98rem;
-  line-height: 1.7;
-  color: var(--dark-text-muted);
-  border-top: 1px solid transparent;
-}
-.light-mode .faq-answer {
-  color: var(--light-text-muted);
-}
-
 .blog-section {
   max-width: 1100px;
-  margin: 0 auto 90px;
+  margin: 0 auto 70px;
   padding: 0 20px;
 }
 
@@ -433,6 +368,72 @@ body.light-mode {
 .blog-card:hover .blog-read-link {
   gap: 10px;
 }
+
+.faq-accordion {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.faq-item {
+  background: var(--dark-surface);
+  border: 1px solid var(--dark-border2);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.light-mode .faq-item {
+  background: var(--light-surface);
+  border-color: var(--light-border2);
+}
+
+.faq-item[open] {
+  border-color: var(--accent);
+}
+
+.faq-question {
+  list-style: none;
+  cursor: pointer;
+  padding: 18px 20px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--dark-text);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+.light-mode .faq-question { color: var(--light-text); }
+
+.faq-question::-webkit-details-marker {
+  display: none;
+}
+
+.faq-question::after {
+  content: "+";
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--accent);
+  line-height: 1;
+  transition: transform 0.25s ease;
+}
+
+.faq-item[open] .faq-question::after {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  padding: 0 20px 20px 20px;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--dark-text-muted);
+  border-top: 1px solid transparent;
+}
+.light-mode .faq-answer {
+  color: var(--light-text-muted);
+}
 </style>
 
 <header class="app-header">
@@ -489,7 +490,33 @@ body.light-mode {
   <p>Unlike conventional web services that transmit files across third-party remote servers, TalkRush utilities are built around client-side browser execution. Using modern Web APIs and JavaScript engines, your images, text documents, and personal credentials never leave your local machine.</p>
 
   <p>This localized execution architecture eliminates transmission delays, conserves mobile network bandwidth, and completely removes the threat of database leaks or unauthorized data retention. Whether you are resizing sensitive identity documents or generating randomized passwords for critical logins, complete privacy remains guaranteed by design.</p>
+</main>
 
+<section class="blog-section">
+  <div class="blog-section-header">
+    <h2 class="blog-section-title">Guides &amp; Practical Tutorials</h2>
+    <p class="blog-section-subtitle">In-depth technical guides, digital privacy tips, and step-by-step optimization workflows.</p>
+  </div>
+
+  <div class="blog-grid-2x2">
+    {% for article in site.pages %}
+      {% if article.url contains '/blog/' and article.url != '/blog/' and article.url != '/blog/index.html' %}
+        <a href="{{ article.url | relative_url }}" class="blog-card">
+          <div>
+            <span class="blog-badge">Guide</span>
+            <h3 class="blog-card-title">{{ article.title }}</h3>
+            <p class="blog-card-desc">{{ article.description }}</p>
+          </div>
+          <div class="blog-read-link">
+            Read Full Guide <span>&rarr;</span>
+          </div>
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+<section class="faq-section">
   <h2>Frequently Asked Questions</h2>
   
   <div class="faq-accordion">
@@ -541,29 +568,5 @@ body.light-mode {
         We actively introduce new tools and maintain existing features based on community needs. If you require a specific workflow utility or wish to suggest improvements, you can reach out directly via our Contact Us page.
       </div>
     </details>
-  </div>
-</main>
-
-<section class="blog-section">
-  <div class="blog-section-header">
-    <h2 class="blog-section-title">Guides &amp; Practical Tutorials</h2>
-    <p class="blog-section-subtitle">In-depth technical guides, digital privacy tips, and step-by-step optimization workflows.</p>
-  </div>
-
-  <div class="blog-grid-2x2">
-    {% for article in site.pages %}
-      {% if article.url contains '/blog/' and article.url != '/blog/' and article.url != '/blog/index.html' %}
-        <a href="{{ article.url | relative_url }}" class="blog-card">
-          <div>
-            <span class="blog-badge">Guide</span>
-            <h3 class="blog-card-title">{{ article.title }}</h3>
-            <p class="blog-card-desc">{{ article.description }}</p>
-          </div>
-          <div class="blog-read-link">
-            Read Full Guide <span>&rarr;</span>
-          </div>
-        </a>
-      {% endif %}
-    {% endfor %}
   </div>
 </section>
