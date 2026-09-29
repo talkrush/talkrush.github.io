@@ -7,23 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="canonical" href="https://talkrush.in/">
 
-<!-- Favicon / App Icons -->
 <link rel="icon" type="image/png" href="https://shkumaraman.github.io/chat/logo.png">
 <link rel="apple-touch-icon" href="https://shkumaraman.github.io/chat/logo.png">
   
-<!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Stranger Chat Online Free: 1v1 Text, Video &amp; Rooms | TalkRush">
 <meta property="og:description" content="Talk to strangers in one tap. Free 1v1 text chat, webcam roulette, voice notes, and group rooms with no login.">
 <meta property="og:image" content="https://shkumaraman.github.io/chat/logo.png">
 
-<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Stranger Chat Online Free: 1v1 Text &amp; Video | TalkRush">
 <meta name="twitter:description" content="Free 1v1 random text chat, webcam roulette, and private rooms with code. No registration required.">
 <meta name="twitter:image" content="https://shkumaraman.github.io/chat/logo.png">
 
-<!-- SEO Structured Data (JSON-LD) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -132,7 +128,6 @@ h1,h2,h3{
 a{color:var(--ac);text-decoration:none}
 a:hover{text-decoration:underline}
 
-/* Navigation Bar */
 .bar{
   position:fixed;
   top:0;left:0;right:0;
@@ -166,7 +161,6 @@ a:hover{text-decoration:underline}
 }
 .ib:hover{background:var(--bub-stranger)}
 
-/* Layout */
 main{max-width:780px;margin:0 auto;padding:calc(76px + env(safe-area-inset-top,0)) 18px 40px}
 section{margin:48px 0}
 h1{font-size:clamp(2.1rem,6vw,2.9rem);letter-spacing:-0.6px}
@@ -175,7 +169,6 @@ h3{font-size:1.18rem;margin-bottom:6px}
 p{margin:0 0 14px;color:var(--mut)}
 .lead{font-size:1.15rem;line-height:1.6;color:var(--mut);margin-top:12px}
 
-/* Badges */
 .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
 .badge{
   font-size:12.5px;
@@ -187,7 +180,6 @@ p{margin:0 0 14px;color:var(--mut)}
   border-radius:999px;
 }
 
-/* Call to Action Buttons */
 .cta{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 14px}
 .btn{
   display:inline-flex;
@@ -208,7 +200,6 @@ p{margin:0 0 14px;color:var(--mut)}
 .btn:hover{background:var(--soft);text-decoration:none}
 .note{font-size:13px;color:var(--mut)}
 
-/* Chat Preview Demo Box */
 .chat-demo{
   background:var(--card);
   border:1px solid var(--line);
@@ -226,7 +217,6 @@ p{margin:0 0 14px;color:var(--mut)}
 .m.b{background:var(--ac);color:#fff;align-self:flex-end;border-bottom-right-radius:3px}
 .m.sys{background:none;color:var(--mut);font-size:12px;padding:0 4px;text-align:center;align-self:center}
 
-/* Cards Grid */
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:18px}
 .card{
   background:var(--card);
@@ -242,7 +232,6 @@ p{margin:0 0 14px;color:var(--mut)}
 .card p{font-size:14px;color:var(--mut);margin:0 0 14px;flex-grow:1}
 .card a{font-weight:700;font-size:14px}
 
-/* Feature Callout Box */
 .callout{
   background:var(--card);
   border:1px solid var(--line);
@@ -254,14 +243,12 @@ p{margin:0 0 14px;color:var(--mut)}
 }
 .callout p{margin:0;font-size:14.5px}
 
-/* Steps and Lists */
 ol.steps{padding-left:20px;color:var(--mut)}
 ol.steps li{margin-bottom:10px;padding-left:4px}
 ol.steps strong{color:var(--ink)}
 ul.tips{padding-left:20px;color:var(--mut)}
 ul.tips li{margin-bottom:8px}
 
-/* Pills / Links */
 .links{display:flex;flex-wrap:wrap;gap:8px;padding:0;list-style:none;margin:14px 0}
 .links a{
   display:inline-block;
@@ -275,7 +262,6 @@ ul.tips li{margin-bottom:8px}
 }
 .links a:hover{border-color:var(--ac);text-decoration:none;color:var(--ac)}
 
-/* FAQs */
 details{
   background:var(--card);
   border:1px solid var(--line);
@@ -293,7 +279,6 @@ summary{
 }
 details p{padding:0 18px 16px;margin:0;font-size:14.5px;color:var(--mut)}
 
-/* Footer */
 footer{
   border-top:1px solid var(--line);
   background:var(--card);
@@ -305,7 +290,6 @@ footer{
 footer a{margin:0 8px;color:var(--mut)}
 footer a:hover{color:var(--ac)}
 
-/* Mobile Drawer */
 #menu{
   position:fixed;
   top:0;left:-290px;
@@ -527,11 +511,13 @@ footer a:hover{color:var(--ac)}
   <a href="https://shkumaraman.github.io/insights.html">Transparency</a>
   <a href="https://shkumaraman.github.io/chat/rooms.html">Rooms</a>
   <a href="https://shkumaraman.github.io/chat/video.html">Video</a>
-  <p style="margin:14px auto 0">&copy; TalkRush. Adults only (18+).</p>
+  <p style="margin:14px auto 0">&copy; 2024 - <span id="cur-year"></span> TalkRush. All rights reserved.</p>
 </footer>
 
 <script>
 (function(){
+  var y=document.getElementById('cur-year');
+  if(y){y.textContent=new Date().getFullYear();}
   var m=document.getElementById('menu'),o=document.getElementById('ov'),b=document.getElementById('mb');
   function t(){var x=m.classList.toggle('open');o.classList.toggle('open',x);b.setAttribute('aria-expanded',x);b.innerHTML=x?'&#10006;':'&#9776;'}
   b.onclick=t;o.onclick=t;
